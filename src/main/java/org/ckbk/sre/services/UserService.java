@@ -1,16 +1,17 @@
-package org.loose.fis.sre.services;
+package org.ckbk.sre.services;
 
+import org.ckbk.sre.exceptions.EmptyInputFieldException;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
-import org.loose.fis.sre.model.User;
+import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
+import org.ckbk.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
-import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
+import static org.ckbk.sre.services.FileSystemService.getPathToFile;
 
 public class UserService {
 
@@ -18,15 +19,16 @@ public class UserService {
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("registration-example.db").toFile())
+                .filePath(getPathToFile("UserFile.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, User.ROLE role) throws UsernameAlreadyExistsException, EmptyInputFieldException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
+        userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -34,6 +36,9 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+    private static void checkInputFieldsAreFilled(String username, String password, String mail, String nrTel, String lastName, String firstName) throws EmptyInputFieldException {
+        if(username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || nrTel.isEmpty() || mail.isEmpty()) throw new EmptyInputFieldException();
     }
 
     private static String encodePassword(String salt, String password) {

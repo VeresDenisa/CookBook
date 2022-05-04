@@ -1,12 +1,12 @@
-package org.loose.fis.sre;
+package org.ckbk.sre;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.loose.fis.sre.services.FileSystemService;
-import org.loose.fis.sre.services.UserService;
+import org.ckbk.sre.services.FileSystemService;
+import org.ckbk.sre.services.UserService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,11 +15,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        System.out.println("NUUUUUUU!!!! VREAU SA DOOOOOORM!!!!");
         initDirectory();
+        System.out.println("NUUUUUUU!!!! VREAU SA DOOOOOORM!!!!");
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
-        primaryStage.setTitle("Registration Example");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        System.out.println("NUUUUUUU!!!! VREAU SA DOOOOOORM!!!!");
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
+        System.out.println("NUUUUUUU!!!! VREAU SA DOOOOOORM!!!!");
+        primaryStage.setTitle("SIGN IN / SIGN UP");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
