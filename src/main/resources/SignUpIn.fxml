@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.SignUpInController">
+    <items>
+        <AnchorPane>
+        </AnchorPane>
+        <AnchorPane>
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="SIGN UP" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font></Label>
+                <Label alignment="CENTER" text="All fields are mandatory!" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                    <font>
+                        <Font size="10.0" />
+                    </font></Label>
+
+                <Label text="Last Name:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="lastNameField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0" />
+
+                <Label text="First Name:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="140.0" />
+                <TextField fx:id="firstNameField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="140.0" />
+
+                <Label text="E-Mail Address:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="180.0" />
+                <TextField fx:id="mailField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="180.0" />
+
+                <Label text="Phone Number:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="220.0" />
+                <TextField fx:id="nrTelField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="220.0" />
+
+                <Label text="Username:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="280.0" />
+                <TextField fx:id="usernameField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="280.0" />
+
+                <Label text="Password:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="320.0" />
+                <PasswordField fx:id="passwordField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="320.0" />
+
+                <Text fx:id="registrationMessage" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="360.0" />
+                <HBox alignment="bottom_right" spacing="10" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="400.0">
+                    <Button onMouseClicked="#handleRegisterAction" prefHeight="25.0" prefWidth="283.0" text="Register" />
+                </HBox>
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
