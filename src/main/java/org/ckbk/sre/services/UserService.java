@@ -4,6 +4,7 @@ import org.ckbk.sre.exceptions.EmptyInputFieldException;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
+import org.ckbk.sre.exceptions.InvalidCredentialsException;
 import org.ckbk.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -29,6 +30,18 @@ public class UserService {
         checkUserDoesNotAlreadyExist(username);
         checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role));
+    }
+    public static void logInUser(String username, String password) throws InvalidCredentialsException, EmptyInputFieldException {
+        if(username.isEmpty() || password.isEmpty()) throw new EmptyInputFieldException();
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                if(!Objects.equals(encodePassword(username, password), user.getPassword())) {
+                    throw new InvalidCredentialsException();
+                } else {
+                    return;
+                }
+        }
+        throw  new InvalidCredentialsException();
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
