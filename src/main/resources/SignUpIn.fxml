@@ -10,6 +10,31 @@
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.SignUpInController">
     <items>
         <AnchorPane>
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="LOG IN" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font></Label>
+                <Label alignment="CENTER" text="All fields are mandatory!" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                    <font>
+                        <Font size="10.0" />
+                    </font></Label>
+
+                <Label text="Username:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="140.0" />
+                <TextField fx:id="usernameLogInField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="140.0" />
+
+                <Label text="Password:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="180.0" />
+                <PasswordField fx:id="passwordLogInField" prefWidth="149.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="180.0" />
+
+                <Text fx:id="logInMessage" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="360.0" />
+                <HBox alignment="bottom_right" spacing="10" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="400.0">
+                    <Button onMouseClicked="#handleLogInAction" prefHeight="25.0" prefWidth="190.0" text="Connect" />
+                </HBox>
+            </children>
         </AnchorPane>
         <AnchorPane>
             <padding>
