@@ -29,7 +29,7 @@ public class UserService {
     public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, User.ROLE role) throws UsernameAlreadyExistsException, EmptyInputFieldException {
         checkUserDoesNotAlreadyExist(username);
         checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
-        userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role));
+        userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "@images/profile/row-1-column-1.png"));
     }
     public static void logInUser(String username, String password) throws InvalidCredentialsException, EmptyInputFieldException {
         if(username.isEmpty() || password.isEmpty()) throw new EmptyInputFieldException();

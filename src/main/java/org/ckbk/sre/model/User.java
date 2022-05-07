@@ -12,8 +12,9 @@ public class User {
     private String firstName;
     public enum ROLE{Client, Manager, Admin};
     private ROLE role;
+    private String image;
 
-    public User(String username, String password, String mail, String nrTel, String lastName, String firstName, ROLE role) {
+    public User(String username, String password, String mail, String nrTel, String lastName, String firstName, ROLE role, String image) {
         this.username = username;
         this.password = password;
         this.mail = mail;
@@ -21,6 +22,7 @@ public class User {
         this.lastName = lastName;
         this.firstName = firstName;
         this.role = role;
+        this.image = image;
     }
 
     public User(){
@@ -43,19 +45,48 @@ public class User {
     public String getMail() {
         return mail;
     }
-    public void setMail(String mail) { this.mail = mail;}
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-    public String getNrTel() { return nrTel;}
-    public void setNrTel(String nrTel) { this.nrTel = nrTel;}
+    public String getNrTel() {
+        return nrTel;
+    }
 
-    public String getLastName() { return lastName;}
-    public void setLastName(String lastName) { this.lastName = lastName;}
+    public void setNrTel(String nrTel) {
+        this.nrTel = nrTel;
+    }
 
-    public String getFirstName() { return firstName;}
-    public void setFirstName(String firstName) { this.firstName = firstName;}
+    public String getLastName() {
+        return lastName;
+    }
 
-    public ROLE getRole() { return role;}
-    public void setRole(ROLE role) { this.role = role;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public boolean equals(Object o) {
