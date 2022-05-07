@@ -13,6 +13,8 @@ import java.nio.file.Path;
 
 public class Main extends Application {
 
+    public static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
@@ -22,6 +24,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 900, 500));
         primaryStage.setResizable(false);
         primaryStage.show();
+        this.primaryStage = primaryStage;
     }
 
     private void initDirectory() {
