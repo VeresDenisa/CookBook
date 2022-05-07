@@ -21,5 +21,13 @@ public class SidebarController {
 
     @FXML
     public void handleGoMyProfile() throws Exception{
+        org.ckbk.sre.Main.primaryStage.close();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyProfile.fxml"));
+        primaryStage.setTitle("MY PROFILE");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        org.ckbk.sre.Main.primaryStage = primaryStage;
     }
 }
