@@ -55,7 +55,7 @@ public class SignUpInController {
             UserService.logInUser(usernameLogInField.getText(), passwordLogInField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Sidebar.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
             primaryStage.setTitle("RECIPES BOOK");
             primaryStage.setScene(new Scene(root, 900, 500));
             primaryStage.setResizable(false);

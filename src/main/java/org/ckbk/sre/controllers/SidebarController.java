@@ -30,4 +30,16 @@ public class SidebarController {
         primaryStage.show();
         org.ckbk.sre.Main.primaryStage = primaryStage;
     }
+
+    @FXML
+    public void handleGoRecipeBook() throws Exception{
+        org.ckbk.sre.Main.primaryStage.close();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyProfile.fxml"));
+        primaryStage.setTitle("RECIPES BOOK");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        org.ckbk.sre.Main.primaryStage = primaryStage;
+    }
 }

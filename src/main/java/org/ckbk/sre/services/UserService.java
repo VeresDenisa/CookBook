@@ -50,6 +50,7 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
     private static void checkInputFieldsAreFilled(String username, String password, String mail, String nrTel, String lastName, String firstName) throws EmptyInputFieldException {
         if(username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || nrTel.isEmpty() || mail.isEmpty()) throw new EmptyInputFieldException();
     }

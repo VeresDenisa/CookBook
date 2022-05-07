@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.SidebarController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.SidebarController">
     <children>
         <VBox prefHeight="500.0" prefWidth="61.0" spacing="25" style="-fx-background-color: #1d1d1d;">
             <padding>
@@ -29,7 +29,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button>
+                <Button onMouseClicked="#handleGoRecipeBook">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0">
                             <Image url="@images/icon/icon_recipe.png" />
