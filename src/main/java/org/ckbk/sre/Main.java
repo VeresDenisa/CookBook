@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.ckbk.sre.services.FileSystemService;
+import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
 
 import java.nio.file.Files;

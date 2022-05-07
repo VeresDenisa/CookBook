@@ -6,20 +6,21 @@ public class Recipe {
     private static int id = 0;
     private final int recipeId;
     private String name;
-    private User author;
+    private String author;
     private int complexity;
     private int time;
     private String image;
     private String description;
     private int stars;
 
-    public enum TYPE{Breakfast, Soup, Dessert, Lunch, Snack, Dinner, Celebration, Other}
+    public enum TYPE{Breakfast, Lunch, Dinner, Other}
     private TYPE type;
 
-    public Recipe(String name, User author, int complexity, int time, String image, String description, TYPE type){
+    public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type){
         this.name = name;
         this.author = author;
         this.complexity = complexity;
+        this.description = description;
         this.time = time;
         this.image = image;
         this.type = type;
@@ -36,11 +37,11 @@ public class Recipe {
         this.name = name;
     }
 
-    public User getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
