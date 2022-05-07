@@ -1,6 +1,6 @@
 package org.ckbk.sre.controllers;
 
-public class RecipeBox {
+public class RecipeBoxController {
     public void handleOpenRecipeAction() {
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.AddRecipeController">
+   <children>
+      <fx:include source="Sidebar.fxml" />
+
+      <AnchorPane prefHeight="500.0" prefWidth="900.0">
+      <ChoiceBox fx:id="typeField" layoutX="680.0" layoutY="238.0" prefHeight="25.0" prefWidth="149.0" value="Breakfast">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Breakfast" />
+               <String fx:value="Lunch" />
+               <String fx:value="Dinner" />
+               <String fx:value="Other" />
+            </FXCollections>
+         </items>
+      </ChoiceBox>
+      <Button onMouseClicked="#handleAddRecipeAction" layoutX="762.0" layoutY="435.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="66.0" text="Add">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="151.0" layoutY="70.0" text="Title: " />
+      <Label layoutX="616.0" layoutY="242.0" text="Type: " />
+      <Label layoutX="132.0" layoutY="289.0" text="Description: " />
+      <Label layoutX="599.0" layoutY="58.0" text="Complexity: " />
+      <Label layoutX="616.0" layoutY="109.0" text="Time: " />
+      <Label layoutX="613.0" layoutY="172.0" text="Image: " />
+      <TextField fx:id="nameField" layoutX="216.0" layoutY="54.0" prefHeight="50.0" prefWidth="275.0" />
+      <TextField fx:id="complexityField" layoutX="679.0" layoutY="55.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="timeField" layoutX="679.0" layoutY="105.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="imageField" layoutX="679.0" layoutY="155.0" prefHeight="50.0" prefWidth="150.0" />
+      <TextField fx:id="descriptionField" layoutX="216.0" layoutY="122.0" prefHeight="350.0" prefWidth="275.0" />
+      </AnchorPane>
+   </children>
+</AnchorPane>

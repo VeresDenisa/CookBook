@@ -17,6 +17,7 @@ import static org.ckbk.sre.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    private static String loggedInUser;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -38,10 +39,15 @@ public class UserService {
                 if(!Objects.equals(encodePassword(username, password), user.getPassword())) {
                     throw new InvalidCredentialsException();
                 } else {
+                    loggedInUser = username;
                     return;
                 }
         }
         throw  new InvalidCredentialsException();
+    }
+
+    public static String getUsername(){
+        return loggedInUser;
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {

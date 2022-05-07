@@ -32,10 +32,22 @@ public class SidebarController {
     }
 
     @FXML
+    public void handleGoAddRecipe() throws Exception{
+        org.ckbk.sre.Main.primaryStage.close();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddRecipe.fxml"));
+        primaryStage.setTitle("ADD RECIPE");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        org.ckbk.sre.Main.primaryStage = primaryStage;
+    }
+
+    @FXML
     public void handleGoRecipeBook() throws Exception{
         org.ckbk.sre.Main.primaryStage.close();
         Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyProfile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
         primaryStage.setTitle("RECIPES BOOK");
         primaryStage.setScene(new Scene(root, 900, 500));
         primaryStage.setResizable(false);

@@ -22,7 +22,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button>
+                <Button onMouseClicked="#handleGoAddRecipe">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0">
                             <Image url="@images/icon/icon_add.png" />
