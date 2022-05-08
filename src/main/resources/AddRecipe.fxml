@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.AddRecipeController">
    <children>
       <fx:include source="Sidebar.fxml" />
@@ -21,7 +21,7 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <Button onMouseClicked="#handleAddRecipeAction" layoutX="762.0" layoutY="435.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="66.0" text="Add">
+      <Button layoutX="762.0" layoutY="435.0" mnemonicParsing="false" onMouseClicked="#handleAddRecipeAction" prefHeight="37.0" prefWidth="66.0" text="Add">
          <font>
             <Font size="14.0" />
          </font></Button>
@@ -36,6 +36,8 @@
       <TextField fx:id="timeField" layoutX="679.0" layoutY="105.0" prefHeight="25.0" prefWidth="150.0" />
       <TextField fx:id="imageField" layoutX="679.0" layoutY="155.0" prefHeight="50.0" prefWidth="150.0" />
       <TextField fx:id="descriptionField" layoutX="216.0" layoutY="122.0" prefHeight="350.0" prefWidth="275.0" />
+
+         <Text fx:id="errorMessage" layoutX="589.0" layoutY="378.0" textAlignment="CENTER" wrappingWidth="240.0" />
       </AnchorPane>
    </children>
 </AnchorPane>

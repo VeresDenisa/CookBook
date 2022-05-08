@@ -8,9 +8,12 @@ import javafx.stage.Stage;
 import org.ckbk.sre.services.FileSystemService;
 import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
+import org.dizitart.no2.Nitrite;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import static org.ckbk.sre.services.FileSystemService.getPathToFile;
 
 public class Main extends Application {
 
@@ -19,7 +22,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
-        UserService.initDatabase();
+        Nitrite database = Nitrite.builder()
+                .filePath(getPathToFile("UserFile.db").toFile())
+                .openOrCreate("test", "test");
+        UserService.initDatabase(database);
+        RecipeService.initDatabase(database);
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
         primaryStage.setTitle("SIGN IN / SIGN UP");
         primaryStage.setScene(new Scene(root, 900, 500));

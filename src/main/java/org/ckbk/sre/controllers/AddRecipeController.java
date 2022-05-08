@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.ckbk.sre.exceptions.EmptyInputFieldException;
+import org.ckbk.sre.exceptions.InputNotANumberException;
 import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
 import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.User;
@@ -29,20 +30,23 @@ public class AddRecipeController {
     private TextField descriptionField;
     @FXML
     private TextField imageField;
+    @FXML
+    private Text errorMessage;
 
     @FXML
     public void handleAddRecipeAction() throws Exception{
         try {
-            RecipeService.addRecipe(nameField.getText(), UserService.getUsername(), Integer.valueOf(complexityField.getText()), Integer.valueOf(timeField.getText()), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
-                org.ckbk.sre.Main.primaryStage.close();
-                Stage primaryStage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
-                primaryStage.setTitle("RECIPES BOOK");
-                primaryStage.setScene(new Scene(root, 900, 500));
-                primaryStage.setResizable(false);
-                primaryStage.show();
-                org.ckbk.sre.Main.primaryStage = primaryStage;
-        } catch (EmptyInputFieldException e) {
+            RecipeService.addRecipe(nameField.getText(), UserService.getUsername(), complexityField.getText(), timeField.getText(), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
+            org.ckbk.sre.Main.primaryStage.close();
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
+            primaryStage.setTitle("RECIPES BOOK");
+            primaryStage.setScene(new Scene(root, 900, 500));
+            primaryStage.setResizable(false);
+            primaryStage.show();
+            org.ckbk.sre.Main.primaryStage = primaryStage;
+        } catch (EmptyInputFieldException | InputNotANumberException e) {
+            errorMessage.setText(e.getMessage());
         }
     }
 }

@@ -1,9 +1,7 @@
 package org.ckbk.sre.model;
-import org.dizitart.no2.objects.Id;
 
 public class Recipe {
-    @Id
-    private static int id = 0;
+    private static int id = 1;
     private final int recipeId;
     private String name;
     private String author;
@@ -16,7 +14,7 @@ public class Recipe {
     public enum TYPE{Breakfast, Lunch, Dinner, Other}
     private TYPE type;
 
-    public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type){
+    public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type) {
         this.name = name;
         this.author = author;
         this.complexity = complexity;
