@@ -11,9 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.ckbk.sre.exceptions.EmptyInputFieldException;
 import org.ckbk.sre.exceptions.InputNotANumberException;
-import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
-import org.ckbk.sre.model.Recipe;
-import org.ckbk.sre.model.User;
 import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
 
@@ -36,7 +33,7 @@ public class AddRecipeController {
     @FXML
     public void handleAddRecipeAction() throws Exception{
         try {
-            RecipeService.addRecipe(nameField.getText(), UserService.getUsername(), complexityField.getText(), timeField.getText(), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
+            RecipeService.addRecipe(nameField.getText(), UserService.getUser(), complexityField.getText(), timeField.getText(), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));

@@ -3,6 +3,7 @@ package org.ckbk.sre.services;
 import org.ckbk.sre.exceptions.EmptyInputFieldException;
 import org.ckbk.sre.exceptions.InputNotANumberException;
 import org.ckbk.sre.model.Recipe;
+import org.ckbk.sre.model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
@@ -14,7 +15,7 @@ public class RecipeService {
         recipeRepository = database.getRepository(Recipe.class);
     }
 
-    public static void addRecipe(String name, String author, String complexity, String time, String type, String image, String description) throws EmptyInputFieldException, InputNotANumberException {
+    public static void addRecipe(String name, User author, String complexity, String time, String type, String image, String description) throws EmptyInputFieldException, InputNotANumberException {
         checkInputFieldsAreFilled(name, complexity, time, image, description);
         checkInputIsANumber(complexity, time);
         Recipe.TYPE typeT;
