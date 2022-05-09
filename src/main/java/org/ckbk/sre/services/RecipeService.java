@@ -3,6 +3,7 @@ package org.ckbk.sre.services;
 import org.ckbk.sre.exceptions.EmptyInputFieldException;
 import org.ckbk.sre.exceptions.InputNotANumberException;
 import org.ckbk.sre.model.Recipe;
+import org.ckbk.sre.model.RecipeList;
 import org.ckbk.sre.model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -43,5 +44,12 @@ public class RecipeService {
         } catch (NumberFormatException nfe) {
             throw new InputNotANumberException();
         }
+    }
+
+    private static Recipe getRecipe(int i){
+        for (Recipe recipe : recipeRepository.find()) {
+                return recipe;
+        }
+        return null;
     }
 }

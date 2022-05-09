@@ -40,7 +40,7 @@ public class SignUpInController {
     @FXML
     public void handleRegisterAction() {
         try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), User.ROLE.Client);
+            UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), "Client");
             registrationMessage.setText("Client account created successfully!");
         } catch (EmptyInputFieldException | UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());

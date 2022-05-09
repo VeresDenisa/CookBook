@@ -23,7 +23,7 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, User.ROLE role) throws UsernameAlreadyExistsException, EmptyInputFieldException {
+    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, String role) throws UsernameAlreadyExistsException, EmptyInputFieldException {
         checkUserDoesNotAlreadyExist(username);
         checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "@../images/profile/row-1-column-1.png"));

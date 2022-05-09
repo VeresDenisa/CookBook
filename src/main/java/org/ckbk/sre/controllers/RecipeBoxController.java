@@ -8,12 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.ckbk.sre.model.RecipeList;
+import org.ckbk.sre.model.User;
+import org.dizitart.no2.NitriteCollection;
+import org.dizitart.no2.objects.ObjectRepository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class RecipeBoxController implements Initializable {
+public class RecipeBoxController {
     public Text type;
     @FXML
     private Text name;
@@ -31,7 +36,7 @@ public class RecipeBoxController implements Initializable {
     private Text description;
 
     @FXML
-    public void showCompressedRecipe() {
+    public void initialize() {
     }
 
     public void handleOpenRecipeAction() throws Exception {
@@ -43,10 +48,5 @@ public class RecipeBoxController implements Initializable {
         primaryStage.setResizable(false);
         primaryStage.show();
         org.ckbk.sre.Main.primaryStage = primaryStage;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
