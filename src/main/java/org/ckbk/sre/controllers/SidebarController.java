@@ -12,7 +12,7 @@ import org.ckbk.sre.services.UserService;
 public class SidebarController {
     @FXML
     public ImageView profileImage;
-//
+
 //    @FXML
 //    private void initialize() {
 //        Image image = new Image(UserService.getUser().getImage());

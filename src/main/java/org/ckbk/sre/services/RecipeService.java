@@ -8,6 +8,8 @@ import org.ckbk.sre.model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
+import java.util.Objects;
+
 public class RecipeService {
 
     private static ObjectRepository<Recipe> recipeRepository;
@@ -46,8 +48,9 @@ public class RecipeService {
         }
     }
 
-    private static Recipe getRecipe(int i){
+    public static Recipe getRecipe(int i){
         for (Recipe recipe : recipeRepository.find()) {
+            if(Objects.equals(recipe.getRecipeId(),i))
                 return recipe;
         }
         return null;

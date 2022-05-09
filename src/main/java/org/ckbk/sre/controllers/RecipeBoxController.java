@@ -8,8 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.RecipeList;
 import org.ckbk.sre.model.User;
+import org.ckbk.sre.services.RecipeService;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.objects.ObjectRepository;
 
@@ -19,11 +21,14 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RecipeBoxController {
+    @FXML
     public Text type;
     @FXML
-    private Text name;
+    private Text title;
     @FXML
     private Text author;
+    @FXML
+    private Text recipeId;
     @FXML
     private Text complexity;
     @FXML
@@ -32,11 +37,20 @@ public class RecipeBoxController {
     private Text stars;
     @FXML
     private Text image;
-    @FXML
-    private Text description;
 
     @FXML
     public void initialize() {
+//        Recipe recipe = RecipeService.getRecipe(0);
+//        title.setText(recipe.getName());
+//        recipeId.setText(String.valueOf(recipe.getRecipeId()));
+//        author.setText(recipe.getAuthor().getUsername());
+//        if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
+//        else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
+//        else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
+//        else type.setText("Other");
+//        complexity.setText(String.valueOf(recipe.getComplexity()) + " / 5");
+//        time.setText(String.valueOf(recipe.getTime() / 60) + "h " + String.valueOf(recipe.getTime() % 60) + "m");
+//        stars.setText(String.valueOf(recipe.getStars()) + " / 5");
     }
 
     public void handleOpenRecipeAction() throws Exception {
