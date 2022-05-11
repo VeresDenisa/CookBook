@@ -1,21 +1,22 @@
 package org.ckbk.sre.model;
 
+import org.ckbk.sre.services.RecipeService;
+
 public class Recipe {
-    private static int id = 1;
-    private final int recipeId;
-    private final String name;
-    private final User author;
-    private final int complexity;
-    private final int time;
-    private final String image;
-    private final String description;
+    private long recipeId;
+    private String name;
+    private String author;
+    private int complexity;
+    private int time;
+    private String image;
+    private String description;
     private int stars;
     private boolean approved;
 
     public enum TYPE{Breakfast, Lunch, Dinner, Other}
-    private final TYPE type;
+    private TYPE type;
 
-    public Recipe(String name, User author, int complexity, int time, String image, String description, TYPE type) {
+    public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type) {
         this.name = name;
         this.author = author;
         this.complexity = complexity;
@@ -24,17 +25,28 @@ public class Recipe {
         this.image = image;
         this.type = type;
         this.stars = 0;
-        this.recipeId = id;
-        id++;
+        this.recipeId = RecipeService.getRecipeRepositorySize() + 1;
         this.approved = false;
+    }
+
+    public Recipe(){
+
     }
 
     public String getName() {
         return name;
     }
 
-    public User getAuthor() {
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getAuthor() {
         return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public boolean isApproved() {
@@ -49,8 +61,20 @@ public class Recipe {
         return complexity;
     }
 
+    public void setComplexity(int complexity) {
+        this.complexity = complexity;
+    }
+
     public int getTime() {
         return time;
+    }
+
+    public void setRecipeId(long recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public String getImage() {
@@ -59,6 +83,18 @@ public class Recipe {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setType(TYPE type) {
+        this.type = type;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getStars() {
@@ -73,7 +109,7 @@ public class Recipe {
         return type;
     }
 
-    public int getRecipeId() {
+    public long getRecipeId() {
         return recipeId;
     }
 }

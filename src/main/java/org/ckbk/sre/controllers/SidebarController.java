@@ -9,15 +9,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.ckbk.sre.services.UserService;
 
+import java.util.Objects;
+
 public class SidebarController {
     @FXML
     public ImageView profileImage;
 
-//    @FXML
-//    private void initialize() {
-//        Image image = new Image(UserService.getUser().getImage());
-//        this.profileImage.setImage(image);
-//    }
+    @FXML
+    private void initialize() {
+        Image image = new Image(UserService.getUser().getImage());
+        this.profileImage.setImage(image);
+    }
 
     @FXML
     public void handleLogOutAction() throws Exception {

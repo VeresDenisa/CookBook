@@ -33,6 +33,7 @@ public class AddRecipeController {
     @FXML
     public void handleAddRecipeAction() throws Exception{
         try {
+            System.out.println(UserService.getUser().getUsername());
             RecipeService.addRecipe(nameField.getText(), UserService.getUser(), complexityField.getText(), timeField.getText(), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();

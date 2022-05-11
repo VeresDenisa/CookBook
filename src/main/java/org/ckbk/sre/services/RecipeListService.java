@@ -18,16 +18,17 @@ public class RecipeListService {
     public static void addRecipeList(String username, int recipeId, String state, boolean fav) {
         boolean insert = true;
         for (RecipeList recipeList : recipeListRepository.find()) {
-            if (Objects.equals(username, recipeList.getUsername()) && Objects.equals(recipeId, recipeList.getRecipeId()))
-                switch (state){
+            if (Objects.equals(username, recipeList.getUsername()) && Objects.equals(recipeId, recipeList.getRecipeId())) {
+                switch (state) {
                     case "done":
                         recipeListRepository.update(new RecipeList(username, recipeId, fav, false, false, true));
                     case "toDo":
-                        recipeListRepository.update(new RecipeList(username, recipeId, fav, false,true, false));
+                        recipeListRepository.update(new RecipeList(username, recipeId, fav, false, true, false));
                     case "now":
                         recipeListRepository.update(new RecipeList(username, recipeId, fav, true, false, false));
                 }
-            insert = false;
+                insert = false;
+            }
         }
         if(insert)
             switch (state){

@@ -21,18 +21,16 @@ public class RecipeService {
     public static void addRecipe(String name, User author, String complexity, String time, String type, String image, String description) throws EmptyInputFieldException, InputNotANumberException {
         checkInputFieldsAreFilled(name, complexity, time, image, description);
         checkInputIsANumber(complexity, time);
-        Recipe.TYPE typeT;
         switch (type) {
             case "Breakfast":
-                typeT = Recipe.TYPE.Breakfast;
+                recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Breakfast));
             case "Lunch":
-                typeT = Recipe.TYPE.Lunch;
+                recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Lunch));
             case "Dinner":
-                typeT = Recipe.TYPE.Dinner;
+                recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Dinner));
             default:
-                typeT = Recipe.TYPE.Other;
+                recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Other));
         }
-        recipeRepository.insert(new Recipe(name, author, Integer.parseInt(complexity), Integer.parseInt(time), image, description, typeT));
     }
 
     private static void checkInputFieldsAreFilled(String name, String complexity, String time, String image, String description) throws EmptyInputFieldException {
@@ -48,11 +46,15 @@ public class RecipeService {
         }
     }
 
-    public static Recipe getRecipe(int i){
+    public static Recipe getRecipe(long i){
         for (Recipe recipe : recipeRepository.find()) {
-            if(Objects.equals(recipe.getRecipeId(),i))
+            if(recipe.getRecipeId() == i)
                 return recipe;
         }
         return null;
+    }
+
+    public static long getRecipeRepositorySize(){
+        return recipeRepository.size();
     }
 }

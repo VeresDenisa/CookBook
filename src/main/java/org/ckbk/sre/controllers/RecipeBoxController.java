@@ -27,32 +27,34 @@ public class RecipeBoxController {
     private Text title;
     @FXML
     private Text author;
-    @FXML
-    private Text recipeId;
+//    @FXML
+//    private Text recipeId;
     @FXML
     private Text complexity;
     @FXML
     private Text time;
     @FXML
     private Text stars;
-    @FXML
-    private Text image;
+//    @FXML
+//    private Text image;
 
     @FXML
     public void initialize() {
-//        Recipe recipe = RecipeService.getRecipe(0);
-//        title.setText(recipe.getName());
+        Recipe recipe = RecipeService.getRecipe(1);
+        assert recipe != null;
+        title.setText(recipe.getName());
 //        recipeId.setText(String.valueOf(recipe.getRecipeId()));
-//        author.setText(recipe.getAuthor().getUsername());
-//        if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
-//        else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
-//        else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
-//        else type.setText("Other");
-//        complexity.setText(String.valueOf(recipe.getComplexity()) + " / 5");
-//        time.setText(String.valueOf(recipe.getTime() / 60) + "h " + String.valueOf(recipe.getTime() % 60) + "m");
-//        stars.setText(String.valueOf(recipe.getStars()) + " / 5");
+        author.setText(recipe.getAuthor());
+        if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
+        else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
+        else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
+        else type.setText("Other");
+        complexity.setText(String.valueOf(recipe.getComplexity()) + " / 5");
+        time.setText(String.valueOf(recipe.getTime() / 60) + "h " + String.valueOf(recipe.getTime() % 60) + "m");
+        stars.setText(String.valueOf(recipe.getStars()) + " / 5");
     }
 
+    @FXML
     public void handleOpenRecipeAction() throws Exception {
         org.ckbk.sre.Main.primaryStage.close();
         Stage primaryStage = new Stage();
