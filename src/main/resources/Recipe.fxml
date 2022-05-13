@@ -28,13 +28,14 @@
         <Text fx:id="complexity" layoutX="100.0" layoutY="110.0" wrappingWidth="100.0" />
         <Text fx:id="time" layoutX="220.0" layoutY="110.0" wrappingWidth="100.0" />
         <Text fx:id="stars" layoutX="340.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="type" layoutX="460.0" layoutY="110.0" wrappingWidth="100.0" />
 
         <Text fx:id="description" layoutX="150.0" layoutY="160.0" wrappingWidth="500.0" />
 
-        <Text fx:id="addMessage" layoutX="655.0" layoutY="134.0" wrappingWidth="206.0" />
         <Text fx:id="recipeId" layoutX="655.0" layoutY="134.0" wrappingWidth="206.0" />
+        <Text fx:id="addMessage" layoutX="655.0" layoutY="154.0" wrappingWidth="206.0" />
 
-        <ImageView fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
 
     </children>
 </AnchorPane>

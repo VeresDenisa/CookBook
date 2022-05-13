@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class SidebarController {
     @FXML
-    public ImageView profileImage;
+    private ImageView profileImage;
 
     @FXML
     private void initialize() {

@@ -1,6 +1,8 @@
 package org.ckbk.sre.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.services.RecipeListService;
@@ -13,8 +15,8 @@ public class RecipeController {
     private Text recipeId;
     @FXML
     private Text author;
-//    @FXML
-//    private Text type;
+    @FXML
+    private Text type;
     @FXML
     private Text complexity;
     @FXML
@@ -25,6 +27,8 @@ public class RecipeController {
     private Text description;
     @FXML
     private Text addMessage;
+    @FXML
+    private ImageView image;
 
     @FXML
     public void initialize() {
@@ -32,10 +36,11 @@ public class RecipeController {
         title.setText(recipe.getName());
         recipeId.setText(String.valueOf(recipe.getRecipeId()));
         author.setText(recipe.getAuthor());
-//        if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
-//        else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
-//        else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
-//        else type.setText("Other");
+        image.setImage(new Image(recipe.getImage()));
+        if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
+        else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
+        else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
+        else type.setText("Other");
         complexity.setText(String.valueOf(recipe.getComplexity()) + " / 5");
         time.setText(String.valueOf(recipe.getTime() / 60) + "h " + String.valueOf(recipe.getTime() % 60) + "m");
         stars.setText(String.valueOf(recipe.getStars()) + " / 5");
@@ -44,25 +49,25 @@ public class RecipeController {
 
     @FXML
     public void handleAddToFavAction() {
-        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), "NO", true);
+        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), false, false, false, true);
         addMessage.setText("Recipe added to My Favorites Recipes!");
     }
 
     @FXML
     public void handleAddToToDoAction() {
-        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), "toDo", false);
+        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), true, false, false, false);
         addMessage.setText("Recipe added to My To Do Recipes!");
     }
 
     @FXML
     public void handleAddToNowAction() {
-        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), "now", false);
+        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), false, true, false, false);
         addMessage.setText("Recipe added to My Doing Now Recipes!");
     }
 
     @FXML
     public void handleAddToDoneAction() {
-        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), "done", false);
+        RecipeListService.addRecipeList(author.getText(), Integer.parseInt(recipeId.getText()), false, false, true, false);
         addMessage.setText("Recipe added to My Done Recipes!");
     }
 }

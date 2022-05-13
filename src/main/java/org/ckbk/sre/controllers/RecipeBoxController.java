@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,22 +29,23 @@ public class RecipeBoxController {
     private Text title;
     @FXML
     private Text author;
-//    @FXML
-//    private Text recipeId;
+    @FXML
+    private Text recipeId;
     @FXML
     private Text complexity;
     @FXML
     private Text time;
     @FXML
     private Text stars;
-//    @FXML
-//    private Text image;
+    @FXML
+    private ImageView image;
 
     @FXML
     public void initialize() {
         Recipe recipe = RecipeService.getRecipe(1);
         assert recipe != null;
         title.setText(recipe.getName());
+        image.setImage(new Image(recipe.getImage()));
 //        recipeId.setText(String.valueOf(recipe.getRecipeId()));
         author.setText(recipe.getAuthor());
         if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");

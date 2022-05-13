@@ -17,6 +17,9 @@ public class RecipeList {
         this.done = done;
     }
 
+    public RecipeList(){
+    }
+
     public String getUsername() {
         return username;
     }
@@ -55,5 +58,13 @@ public class RecipeList {
 
     public void setNow(boolean now) {
         this.now = now;
+    }
+
+    public boolean isFav() {
+        return fav;
+    }
+
+    public void setFav(boolean fav) {
+        this.fav = fav;
     }
 }

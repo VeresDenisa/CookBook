@@ -15,30 +15,20 @@ public class RecipeListService {
         recipeListRepository = database.getRepository(RecipeList.class);
     }
 
-    public static void addRecipeList(String username, int recipeId, String state, boolean fav) {
-        boolean insert = true;
+    public static void addRecipeList(String username, int recipeId, boolean toDo, boolean now, boolean done, boolean fav) {
         for (RecipeList recipeList : recipeListRepository.find()) {
             if (Objects.equals(username, recipeList.getUsername()) && Objects.equals(recipeId, recipeList.getRecipeId())) {
-                switch (state) {
-                    case "done":
-                        recipeListRepository.update(new RecipeList(username, recipeId, fav, false, false, true));
-                    case "toDo":
-                        recipeListRepository.update(new RecipeList(username, recipeId, fav, false, true, false));
-                    case "now":
-                        recipeListRepository.update(new RecipeList(username, recipeId, fav, true, false, false));
-                }
-                insert = false;
+                if(fav != recipeList.isFav())
+                    recipeList.setFav(fav);
+                if(toDo != recipeList.isToDo())
+                    recipeList.setToDo(toDo);
+                if(now != recipeList.isNow())
+                    recipeList.setNow(now);
+                if(done != recipeList.isDone())
+                    recipeList.setDone(done);
+                return;
             }
         }
-        if(insert)
-            switch (state){
-                case "done":
-                    recipeListRepository.insert(new RecipeList(username, recipeId, fav, false, false, true));
-                case "toDo":
-                    recipeListRepository.insert(new RecipeList(username, recipeId, fav, false,true, false));
-                case "now":
-                    recipeListRepository.insert(new RecipeList(username, recipeId, fav, true, false, false));
-            }
-
+        recipeListRepository.insert(new RecipeList(username, recipeId, fav,toDo, now, done));
     }
 }
