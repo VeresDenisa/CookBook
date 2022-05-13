@@ -13,7 +13,6 @@
                   <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="532.0">
                      <children>
-                        <Pagination prefHeight="472.0" prefWidth="839.0" />
                          <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="20.0" />
                          <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="160.0" />
                          <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="300.0" />

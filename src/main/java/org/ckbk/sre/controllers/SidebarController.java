@@ -2,11 +2,25 @@ package org.ckbk.sre.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import org.ckbk.sre.services.UserService;
+
+import java.util.Objects;
 
 public class SidebarController {
+    @FXML
+    private ImageView profileImage;
+
+    @FXML
+    private void initialize() {
+        Image image = new Image(UserService.getUser().getImage());
+        this.profileImage.setImage(image);
+    }
+
     @FXML
     public void handleLogOutAction() throws Exception {
         org.ckbk.sre.Main.primaryStage.close();
@@ -54,4 +68,5 @@ public class SidebarController {
         primaryStage.show();
         org.ckbk.sre.Main.primaryStage = primaryStage;
     }
+
 }

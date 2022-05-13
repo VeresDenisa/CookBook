@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.RecipeController">
+    <children>
+        <fx:include source="Sidebar.fxml" />
+
+        <Button layoutX="655.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToFavAction" text=" FAV " />
+        <Button layoutX="699.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToToDoAction" text="TO DO" />
+        <Button layoutX="752.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToNowAction" text=" NOW " />
+        <Button layoutX="804.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToDoneAction" text=" DONE " />
+
+        <Text fx:id="title" layoutX="100.0" layoutY="50.0" wrappingWidth="760.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+
+        <Text fx:id="author" layoutX="100.0" layoutY="80.0" wrappingWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+
+        <Text fx:id="complexity" layoutX="100.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="time" layoutX="220.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="stars" layoutX="340.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="type" layoutX="460.0" layoutY="110.0" wrappingWidth="100.0" />
+
+        <Text fx:id="description" layoutX="150.0" layoutY="160.0" wrappingWidth="500.0" />
+
+        <Text fx:id="recipeId" layoutX="655.0" layoutY="134.0" wrappingWidth="206.0" />
+        <Text fx:id="addMessage" layoutX="655.0" layoutY="154.0" wrappingWidth="206.0" />
+
+        <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+
+    </children>
+</AnchorPane>

@@ -14,14 +14,23 @@ public class User {
     private ROLE role;
     private String image;
 
-    public User(String username, String password, String mail, String nrTel, String lastName, String firstName, ROLE role, String image) {
+    public User(String username, String password, String mail, String nrTel, String lastName, String firstName, String role, String image) {
         this.username = username;
         this.password = password;
         this.mail = mail;
         this.nrTel = nrTel;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.role = role;
+        switch (role) {
+            case "Client":
+                this.role = ROLE.Client;
+            case "Manager":
+                this.role = ROLE.Manager;
+            case "Admin":
+                this.role = ROLE.Admin;
+            default:
+                this.role = ROLE.Client;
+        }
         this.image = image;
     }
 

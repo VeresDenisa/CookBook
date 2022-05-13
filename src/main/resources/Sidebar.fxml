@@ -13,7 +13,7 @@
             </padding>
 
             <children>
-                <ImageView fitHeight="30.0" fitWidth="30.0">
+                <ImageView fx:id="profileImage" fitHeight="41.0" fitWidth="41.0" >
                 </ImageView>
                 <Button onMouseClicked="#handleGoMyProfile" prefHeight="38.0" prefWidth="38.0">
                     <graphic>

@@ -40,11 +40,9 @@ public class SignUpInController {
     @FXML
     public void handleRegisterAction() {
         try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), User.ROLE.Client);
+            UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), "Client");
             registrationMessage.setText("Client account created successfully!");
-        } catch (EmptyInputFieldException e) {
-            registrationMessage.setText(e.getMessage());
-        } catch (UsernameAlreadyExistsException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());
         }
     }
@@ -61,9 +59,7 @@ public class SignUpInController {
             primaryStage.setResizable(false);
             primaryStage.show();
             org.ckbk.sre.Main.primaryStage = primaryStage;
-        } catch (EmptyInputFieldException e) {
-            logInMessage.setText(e.getMessage());
-        } catch (InvalidCredentialsException e) {
+        } catch (EmptyInputFieldException | InvalidCredentialsException e) {
             logInMessage.setText(e.getMessage());
         }
     }
