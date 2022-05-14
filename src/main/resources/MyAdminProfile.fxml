@@ -11,5 +11,20 @@
     <children>
     <fx:include source="Sidebar.fxml" />
 
+        <TabPane layoutX="61.0" prefHeight="500.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="RECIPES">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="USERS">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </children>
 </AnchorPane>
