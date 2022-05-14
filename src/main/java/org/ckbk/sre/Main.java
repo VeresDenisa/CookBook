@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.ckbk.sre.services.FileSystemService;
-import org.ckbk.sre.services.RecipeListService;
-import org.ckbk.sre.services.RecipeService;
-import org.ckbk.sre.services.UserService;
+import org.ckbk.sre.services.*;
 import org.dizitart.no2.Nitrite;
 
 import java.nio.file.Files;
@@ -29,6 +26,7 @@ public class Main extends Application {
         UserService.initDatabase(database);
         RecipeService.initDatabase(database);
         RecipeListService.initDatabase(database);
+        ProductService.initDatabase(database);
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
         primaryStageS.setTitle("SIGN IN / SIGN UP");
         primaryStageS.setScene(new Scene(root, 900, 500));
