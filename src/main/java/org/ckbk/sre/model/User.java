@@ -2,6 +2,8 @@ package org.ckbk.sre.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.util.Objects;
+
 public class User {
     @Id
     private String username;
@@ -21,16 +23,9 @@ public class User {
         this.nrTel = nrTel;
         this.lastName = lastName;
         this.firstName = firstName;
-        switch (role) {
-            case "Client":
-                this.role = ROLE.Client;
-            case "Manager":
-                this.role = ROLE.Manager;
-            case "Admin":
-                this.role = ROLE.Admin;
-            default:
-                this.role = ROLE.Client;
-        }
+        if(Objects.equals(role, "Client")) this.role = ROLE.Client;
+        else if(Objects.equals(role, "Admin")) this.role = ROLE.Admin;
+        else this.role = ROLE.Manager;
         this.image = image;
     }
 

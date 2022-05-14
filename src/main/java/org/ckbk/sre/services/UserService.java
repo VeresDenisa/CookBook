@@ -12,8 +12,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
-import static org.ckbk.sre.services.FileSystemService.getPathToFile;
-
 public class UserService {
 
     private static ObjectRepository<User> userRepository;

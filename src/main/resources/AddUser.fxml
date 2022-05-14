@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.AddUserController">
+        <children>
+            <fx:include source="Sidebar.fxml" />
+
+            <Label layoutX="355.0" layoutY="41.0" text="Role:" AnchorPane.leftAnchor="355.0" AnchorPane.topAnchor="41.0" />
+            <ChoiceBox fx:id="roleField" layoutX="426.0" layoutY="37.0" prefHeight="25.0" prefWidth="149.0" value="Admin">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Admin" />
+                        <String fx:value="Manager" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+
+            <Label layoutX="338.0" layoutY="103.0" text="Last Name:" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="103.0" />
+            <TextField fx:id="lastNameField" layoutX="426.0" layoutY="99.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="99.0" />
+
+            <Label layoutX="337.0" layoutY="143.0" text="First Name:" AnchorPane.leftAnchor="337.0" AnchorPane.topAnchor="143.0" />
+            <TextField fx:id="firstNameField" layoutX="426.0" layoutY="139.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="139.0" />
+
+            <Label layoutX="326.0" layoutY="179.0" text="E-Mail Address:" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="179.0" />
+            <TextField fx:id="mailField" layoutX="426.0" layoutY="179.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="179.0" />
+
+            <Label layoutX="326.0" layoutY="219.0" text="Phone Number:" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="219.0" />
+            <TextField fx:id="nrTelField" layoutX="426.0" layoutY="219.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="219.0" />
+
+            <Label layoutX="340.0" layoutY="283.0" text="Username:" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="283.0" />
+            <TextField fx:id="usernameField" layoutX="426.0" layoutY="279.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="279.0" />
+
+            <Label layoutX="342.0" layoutY="323.0" text="Password:" AnchorPane.leftAnchor="342.0" AnchorPane.topAnchor="323.0" />
+            <PasswordField fx:id="passwordField" layoutX="426.0" layoutY="319.0" prefWidth="149.0" AnchorPane.leftAnchor="426.0" AnchorPane.topAnchor="319.0" />
+
+            <Text fx:id="registrationMessage" layoutX="309.0" layoutY="408.0" textAlignment="CENTER" wrappingWidth="283.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="395.05078125" />
+            <Button layoutX="309.0" layoutY="425.0" onMouseClicked="#handleRegisterAction" prefHeight="25.0" prefWidth="283.0" text="ADD USER" />
+        </children>
+
+</AnchorPane>
