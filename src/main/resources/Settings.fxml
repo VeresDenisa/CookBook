@@ -9,26 +9,26 @@
         <fx:include source="Sidebar.fxml" />
 
         <Label layoutX="211.0" layoutY="265.0" text="Role:" AnchorPane.leftAnchor="211.0" AnchorPane.topAnchor="265.0" />
-        <Text fx:id="roleField" layoutX="296.0" layoutY="278.0" wrappingWidth="100.0" />
+        <Text fx:id="roleField" layoutX="270.0" layoutY="278.0" wrappingWidth="126.00000000000006" />
 
         <Label layoutX="198.0" layoutY="63.0" prefHeight="17.0" prefWidth="60.0" text="Last Name:" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="63.0" />
-        <Text fx:id="lastNamePrevField" layoutX="296.0" layoutY="76.0" wrappingWidth="100.0" />
+        <Text fx:id="lastNamePrevField" layoutX="283.0" layoutY="76.0" wrappingWidth="237.0" />
         <TextField fx:id="lastNameField" layoutX="586.0" layoutY="55.0" prefWidth="149.0" AnchorPane.leftAnchor="586.0" AnchorPane.topAnchor="55.0" />
 
         <Label layoutX="197.0" layoutY="103.0" text="First Name:" AnchorPane.leftAnchor="197.0" AnchorPane.topAnchor="103.0" />
-        <Text fx:id="firstNamePrevField" layoutX="296.0" layoutY="117.0" wrappingWidth="100.0" />
+        <Text fx:id="firstNamePrevField" layoutX="283.0" layoutY="116.0" wrappingWidth="237.0" />
         <TextField fx:id="firstNameField" layoutX="586.0" layoutY="95.0" prefWidth="149.0" AnchorPane.leftAnchor="586.0" AnchorPane.topAnchor="95.0" />
 
         <Label layoutX="186.0" layoutY="139.0" text="E-Mail Address:" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="139.0" />
-        <Text fx:id="mailPrevField" layoutX="296.0" layoutY="152.0" wrappingWidth="100.0" />
+        <Text fx:id="mailPrevField" layoutX="283.0" layoutY="152.0" wrappingWidth="237.0" />
         <TextField fx:id="mailField" layoutX="586.0" layoutY="135.0" prefWidth="149.0" AnchorPane.leftAnchor="586.0" AnchorPane.topAnchor="135.0" />
 
         <Label layoutX="186.0" layoutY="179.0" text="Phone Number:" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="179.0" />
-        <Text fx:id="nrTelPrevField" layoutX="296.0" layoutY="192.0" wrappingWidth="100.0" />
+        <Text fx:id="nrTelPrevField" layoutX="283.0" layoutY="192.0" wrappingWidth="237.0" />
         <TextField fx:id="nrTelField" layoutX="586.0" layoutY="175.0" prefWidth="149.0" AnchorPane.leftAnchor="586.0" AnchorPane.topAnchor="175.0" />
 
         <Label layoutX="197.0" layoutY="299.0" text="Username:" AnchorPane.leftAnchor="197.0" AnchorPane.topAnchor="299.0" />
-        <Text fx:id="usernameField" layoutX="296.0" layoutY="312.0" wrappingWidth="100.0" />
+        <Text fx:id="usernameField" layoutX="270.0" layoutY="312.0" wrappingWidth="126.00000000000006" />
 
         <Label layoutX="474.0" layoutY="265.0" text="New Password:" AnchorPane.leftAnchor="474.0" AnchorPane.topAnchor="265.0" />
         <Label layoutX="451.0" layoutY="305.0" text="Confirm New Password:" AnchorPane.leftAnchor="451.0" AnchorPane.topAnchor="305.0" />
