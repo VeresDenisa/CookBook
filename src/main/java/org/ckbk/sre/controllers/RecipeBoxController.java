@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -20,22 +19,18 @@ public class RecipeBoxController {
     @FXML
     private Text author;
     @FXML
-    private Text recipeId;
-    @FXML
-    private Text complexity;
+    private ImageView complexity;
     @FXML
     private Text time;
     @FXML
-    private Text stars;
-    @FXML
     private ImageView image;
-    @FXML
-    private Button button;
+
+    private int index;
 
     @FXML
-    public void initialize() {
-        if(RecipeService.getRecipeRepositorySize() >= 1) {
-            Recipe recipe = RecipeService.getRecipe(1);
+    public void load(int i) {
+            Recipe recipe = RecipeService.getRecipe(i);
+            this.index = i;
             title.setText(recipe.getName());
             image.setImage(new Image(recipe.getImage()));
             author.setText(recipe.getAuthor());
@@ -43,17 +38,24 @@ public class RecipeBoxController {
             else if (recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
             else if (recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
             else type.setText("Other");
-            complexity.setText(recipe.getComplexity() + " / 5");
-            time.setText(recipe.getTime() / 60 + "h " + recipe.getTime() % 60 + "m");
-            stars.setText(recipe.getStars() + " / 5");
-        }
-        else{
-            button.setVisible(false);
-        }
+        if(recipe.getComplexity() == 0)
+            complexity.setImage(new Image("images/icon/icon_stars_0.png"));
+        else if(recipe.getComplexity() == 1)
+            complexity.setImage(new Image("images/icon/icon_stars_1.png"));
+        else if(recipe.getComplexity() == 2)
+            complexity.setImage(new Image("images/icon/icon_stars_2.png"));
+        else if(recipe.getComplexity() == 3)
+            complexity.setImage(new Image("images/icon/icon_stars_3.png"));
+        else if(recipe.getComplexity() == 4)
+            complexity.setImage(new Image("images/icon/icon_stars_4.png"));
+        else
+            complexity.setImage(new Image("images/icon/icon_stars_5.png"));
+        time.setText(recipe.getTime() / 60 + "h " + recipe.getTime() % 60 + "m");
     }
 
     @FXML
     public void handleOpenRecipeAction() throws Exception {
+        RecipeController.setIndex(this.index);
         org.ckbk.sre.Main.primaryStage.close();
         Stage primaryStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Recipe.fxml"));
