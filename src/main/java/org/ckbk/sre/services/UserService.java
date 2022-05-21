@@ -63,6 +63,9 @@ public class UserService {
 
     private static void checkNewPassword(String passN, String passNC) throws NewPasswordIsNotConfirmedException{
         if(!(passN.equals(passNC))) throw new NewPasswordIsNotConfirmedException();
+
+    public static User getFirst(){
+        return userRepository.find().toList().get(0);
     }
 
     private static void checkEmailAddressIsValid(String mail) throws EmailAddressIsNotValidException {

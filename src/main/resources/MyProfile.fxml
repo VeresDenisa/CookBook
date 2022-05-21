@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.MyProfileController">
    <children>
       <fx:include source="Sidebar.fxml" />
 
-      <TabPane layoutX="61.0" prefHeight="500.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE">
-          <tabs>
-              <Tab text="My Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="532.0">
-                     <children>
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="20.0" />
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="160.0" />
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="300.0" />
-                     </children></AnchorPane>
-                  </content>
-              </Tab>
-              <Tab text="Favourite Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
-                  </content>
-              </Tab>
-              <Tab text="Done Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
-                  </content>
-              </Tab>
-              <Tab text="To Do Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
-                  </content>
-              </Tab>
-              <Tab text="Now Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
-                  </content>
-              </Tab>
-          </tabs>
-      </TabPane>
+       <Pane fx:id="pane" layoutX="61.0" layoutY="69.0" prefHeight="377.0" prefWidth="841.0">
+       </Pane>
+       <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" prefHeight="16.0" prefWidth="36.0">
+           <graphic>
+               <ImageView fitHeight="24.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_prev.png" />
+               </ImageView>
+           </graphic></Button>
+       <Button fx:id="next" layoutX="455.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" prefHeight="31.0" prefWidth="36.0">
+           <graphic>
+               <ImageView fitHeight="23.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_next.png" />
+               </ImageView>
+           </graphic></Button>
+
+      <Button layoutX="356.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleGoMine" prefHeight="25.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_idea.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="295.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoFav" prefHeight="25.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_heart.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleGoToDo" prefHeight="41.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_list.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="533.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoDone" prefHeight="41.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_tick.png" />
+              </ImageView>
+          </graphic></Button>
+       <Button layoutX="473.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoNow" prefHeight="25.0" prefWidth="53.0">
+           <graphic>
+               <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_now.png" />
+               </ImageView>
+           </graphic></Button>
+
    </children>
 </AnchorPane>

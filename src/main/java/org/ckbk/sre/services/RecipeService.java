@@ -8,6 +8,8 @@ import org.dizitart.no2.objects.ObjectRepository;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class RecipeService {
 
@@ -26,12 +28,16 @@ public class RecipeService {
         switch (type) {
             case "Breakfast":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Breakfast));
+                break;
             case "Lunch":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Lunch));
+                break;
             case "Dinner":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Dinner));
+                break;
             default:
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Other));
+                break;
         }
     }
 
@@ -42,6 +48,10 @@ public class RecipeService {
 
     private static void checkInputFieldsAreFilled(String name, String complexity, String time, String image, String description) throws EmptyInputFieldException {
         if(name.isEmpty() || image.isEmpty() || description.isEmpty() || complexity.isEmpty() || time.isEmpty()) throw new EmptyInputFieldException();
+    }
+
+    public static ObjectRepository<Recipe> getRecipeRepository() {
+        return recipeRepository;
     }
 
     private static void checkInputIsANumber(String complexity, String time) throws InputNotANumberException {
@@ -66,12 +76,23 @@ public class RecipeService {
             throw new NumberIsNotBetweenConstrainsException();
     }
 
-    public static Recipe getRecipe(long i){
-        for (Recipe recipe : recipeRepository.find()) {
-            if(recipe.getRecipeId() == i)
-                return recipe;
+    public static Recipe getRecipe(int i){
+        try{
+            return recipeRepository.find().toList().get(i);
+        }catch(IndexOutOfBoundsException e){
+            return null;
         }
-        return null;
+    }
+
+    public static ArrayList<Integer> getMyRecipes(){
+        ArrayList<Integer> mine = new ArrayList<Integer>();
+        var l = recipeRepository.find().toList();
+        for(Recipe r : l){
+            if(Objects.equals(r.getAuthor(), UserService.getUser().getUsername())) {
+                mine.add(l.indexOf(r));
+            }
+        }
+        return mine;
     }
 
     public static long getRecipeRepositorySize(){
