@@ -43,7 +43,7 @@ public class RecipeController {
 
     @FXML
     public void initialize() {
-        Recipe recipe = RecipeService.getRecipe(index);
+        Recipe recipe = RecipeService.getRecipeRepository().find().toList().get(index);
         title.setText(recipe.getName());
         author.setText(recipe.getAuthor());
         image.setImage(new Image(recipe.getImage()));
@@ -53,22 +53,22 @@ public class RecipeController {
         else type.setText("Other");
         switch (recipe.getComplexity()){
             case 0:
-                complexity.setImage(new Image("images/icon/icon_stars_0"));
+                complexity.setImage(new Image("images/icon/icon_stars_0.png"));
                 break;
             case 1:
-                complexity.setImage(new Image("images/icon/icon_stars_1"));
+                complexity.setImage(new Image("images/icon/icon_stars_1.png"));
                 break;
             case 2:
-                complexity.setImage(new Image("images/icon/icon_stars_2"));
+                complexity.setImage(new Image("images/icon/icon_stars_2.png"));
                 break;
             case 3:
-                complexity.setImage(new Image("images/icon/icon_stars_3"));
+                complexity.setImage(new Image("images/icon/icon_stars_3.png"));
                 break;
             case 4:
-                complexity.setImage(new Image("images/icon/icon_stars_4"));
+                complexity.setImage(new Image("images/icon/icon_stars_4.png"));
                 break;
             default:
-                complexity.setImage(new Image("images/icon/icon_stars_5"));
+                complexity.setImage(new Image("images/icon/icon_stars_5.png"));
                 break;
         }
         time.setText(recipe.getTime() / 60 + "h " + recipe.getTime() % 60 + "m");
@@ -89,25 +89,25 @@ public class RecipeController {
 
     @FXML
     public void handleAddToFavAction() {
-        RecipeListService.addRecipeList(author.getText(), index, false, false, false, true);
+        RecipeListService.addRecipeList(UserService.getUser().getUsername(), index, false, false, false, true);
         addMessage.setText("Recipe added to My Favorites Recipes!");
     }
 
     @FXML
     public void handleAddToToDoAction() {
-        RecipeListService.addRecipeList(author.getText(), index, true, false, false, false);
+        RecipeListService.addRecipeList(UserService.getUser().getUsername(), index, true, false, false, false);
         addMessage.setText("Recipe added to My To Do Recipes!");
     }
 
     @FXML
     public void handleAddToNowAction() {
-        RecipeListService.addRecipeList(author.getText(), index, false, true, false, false);
+        RecipeListService.addRecipeList(UserService.getUser().getUsername(), index, false, true, false, false);
         addMessage.setText("Recipe added to My Doing Now Recipes!");
     }
 
     @FXML
     public void handleAddToDoneAction() {
-        RecipeListService.addRecipeList(author.getText(), index, false, false, true, false);
+        RecipeListService.addRecipeList(UserService.getUser().getUsername(), index, false, false, true, false);
         addMessage.setText("Recipe added to My Done Recipes!");
     }
 }

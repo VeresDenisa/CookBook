@@ -38,18 +38,18 @@ public class RecipeBoxController {
             else if (recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
             else if (recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");
             else type.setText("Other");
-//        if(recipe.getComplexity() == 0)
-//            complexity.setImage(new Image("images/icon/icon_stars_0"));
-//        else if(recipe.getComplexity() == 1)
-//            complexity.setImage(new Image("images/icon/icon_stars_1"));
-//        else if(recipe.getComplexity() == 2)
-//            complexity.setImage(new Image("images/icon/icon_stars_2"));
-//        else if(recipe.getComplexity() == 3)
-//            complexity.setImage(new Image("images/icon/icon_stars_3"));
-//        else if(recipe.getComplexity() == 4)
-//            complexity.setImage(new Image("images/icon/icon_stars_4"));
-//        else
-//            complexity.setImage(new Image("images/icon/icon_stars_5"));
+        if(recipe.getComplexity() == 0)
+            complexity.setImage(new Image("images/icon/icon_stars_0.png"));
+        else if(recipe.getComplexity() == 1)
+            complexity.setImage(new Image("images/icon/icon_stars_1.png"));
+        else if(recipe.getComplexity() == 2)
+            complexity.setImage(new Image("images/icon/icon_stars_2.png"));
+        else if(recipe.getComplexity() == 3)
+            complexity.setImage(new Image("images/icon/icon_stars_3.png"));
+        else if(recipe.getComplexity() == 4)
+            complexity.setImage(new Image("images/icon/icon_stars_4.png"));
+        else
+            complexity.setImage(new Image("images/icon/icon_stars_5.png"));
         time.setText(recipe.getTime() / 60 + "h " + recipe.getTime() % 60 + "m");
     }
 

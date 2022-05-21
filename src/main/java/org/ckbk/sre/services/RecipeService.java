@@ -50,6 +50,10 @@ public class RecipeService {
         if(name.isEmpty() || image.isEmpty() || description.isEmpty() || complexity.isEmpty() || time.isEmpty()) throw new EmptyInputFieldException();
     }
 
+    public static ObjectRepository<Recipe> getRecipeRepository() {
+        return recipeRepository;
+    }
+
     private static void checkInputIsANumber(String complexity, String time) throws InputNotANumberException {
         try {
             Integer.parseInt(complexity);
@@ -82,9 +86,11 @@ public class RecipeService {
 
     public static ArrayList<Integer> getMyRecipes(){
         ArrayList<Integer> mine = new ArrayList<Integer>();
-        for(Recipe r : recipeRepository.find()){
-            if(Objects.equals(r.getAuthor(), UserService.getUser().getUsername()))
-                mine.add(recipeRepository.find().toList().indexOf(r));
+        var l = recipeRepository.find().toList();
+        for(Recipe r : l){
+            if(Objects.equals(r.getAuthor(), UserService.getUser().getUsername())) {
+                mine.add(l.indexOf(r));
+            }
         }
         return mine;
     }

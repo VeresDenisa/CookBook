@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.MyProfileController">
    <children>
       <fx:include source="Sidebar.fxml" />
 
-       <Pane fx:id="pane" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+       <Pane fx:id="pane" layoutX="61.0" layoutY="69.0" prefHeight="377.0" prefWidth="841.0">
        </Pane>
-       <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
-       <Button fx:id="next" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
+       <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" prefHeight="16.0" prefWidth="36.0">
+           <graphic>
+               <ImageView fitHeight="24.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_prev.png" />
+               </ImageView>
+           </graphic></Button>
+       <Button fx:id="next" layoutX="455.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" prefHeight="31.0" prefWidth="36.0">
+           <graphic>
+               <ImageView fitHeight="23.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_next.png" />
+               </ImageView>
+           </graphic></Button>
 
-      <Button onMouseClicked="#handleGoMine" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="MINE" />
-      <Button onMouseClicked="#handleGoFav" layoutX="382.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="FAV" />
-      <Button onMouseClicked="#handleGoToDo" layoutX="435.0" layoutY="14.0" mnemonicParsing="false" text="TO DO" />
-      <Button onMouseClicked="#handleGoDone" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="DONE" />
-       <Button onMouseClicked="#handleGoNow" layoutX="541.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="NOW" />
+      <Button layoutX="356.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleGoMine" prefHeight="25.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_idea.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="295.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoFav" prefHeight="25.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_heart.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="414.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleGoToDo" prefHeight="41.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_list.png" />
+              </ImageView>
+          </graphic></Button>
+      <Button layoutX="533.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoDone" prefHeight="41.0" prefWidth="53.0">
+          <graphic>
+              <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_tick.png" />
+              </ImageView>
+          </graphic></Button>
+       <Button layoutX="473.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoNow" prefHeight="25.0" prefWidth="53.0">
+           <graphic>
+               <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                   <Image url="@images/icon/icon_now.png" />
+               </ImageView>
+           </graphic></Button>
 
    </children>
 </AnchorPane>

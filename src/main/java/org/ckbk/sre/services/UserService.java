@@ -30,6 +30,10 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "images/profile/row-3-column-4.png"));
     }
 
+    public static User getFirst(){
+        return userRepository.find().toList().get(0);
+    }
+
     private static void checkEmailAddressIsValid(String mail) throws EmailAddressIsNotValidException {
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher mat = pattern.matcher(mail);

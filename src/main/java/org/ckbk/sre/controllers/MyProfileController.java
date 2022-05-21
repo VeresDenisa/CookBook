@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import org.ckbk.sre.Main;
-import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.services.RecipeListService;
 import org.ckbk.sre.services.RecipeService;
 
@@ -34,79 +33,52 @@ public class MyProfileController {
         while (pane.getChildren().size() != 0) {
             pane.getChildren().remove(0);
         }
-        if(current == 1) {
-            ArrayList<Integer> mine = RecipeService.getMyRecipes();
+        next.setVisible(true);
+        prev.setVisible(true);
 
-            if(!(mine.isEmpty())) {
-                for (int i = 0; i < 3; i++) {
-                    Recipe recipe = RecipeService.getRecipe(mine.get((nrPage - 1)) * 3 + i);
-                    if (recipe == null) continue;
+        if (nrPage == 1) {
+            prev.setVisible(false);
+        }
 
-                    FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("RecipeBox.fxml"));
+        ArrayList<Integer> list;
+        if(current == 1)
+            list = RecipeService.getMyRecipes();
+        else if(current == 2)
+            list = RecipeListService.getMyFavRecipes();
+        else if(current == 3)
+            list = RecipeListService.getMyToDoRecipes();
+        else list = RecipeListService.getMyDoneRecipes();
 
-                    try {
-                        Pane p = loader.load();
-                        ((RecipeBoxController) (loader.getController())).load((nrPage - 1) * 3 + i);
-                        pane.getChildren().add(p);
-                        p.setLayoutX(70);
-                        p.setLayoutY(20 + i * 110);
+        if (nrPage == ((list.size() - 1) / 3 + 1) || list.isEmpty()) {
+            next.setVisible(false);
+        }
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                next.setVisible(true);
-                prev.setVisible(true);
+        if(!(list.isEmpty())) {
+            for (int i = 0; i < 3; i++) {
+                if ((nrPage - 1) * 3 + i >= list.size()) continue;
+                FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("RecipeBox.fxml"));
 
-                if (nrPage == 1) {
-                    prev.setVisible(false);
-                }
-                if (nrPage == mine.size() / 3 + 1) {
-                    next.setVisible(false);
-                }
-            }
-        }else if(current == 2){
-            ArrayList<Integer> fav = RecipeListService.getMyFavRecipes();
-            System.out.println(fav.size());
-            if(!(fav.isEmpty())) {
-                for (int i = 0; i < 3; i++) {
-                    Recipe recipe = RecipeService.getRecipe(fav.get((nrPage - 1)) * 3 + i);
-                    if (recipe == null) continue;
-
-                    FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("RecipeBox.fxml"));
-
-                    try {
-                        Pane p = loader.load();
-                        ((RecipeBoxController) (loader.getController())).load((nrPage - 1) * 3 + i);
-                        pane.getChildren().add(p);
-                        p.setLayoutX(70);
-                        p.setLayoutY(20 + i * 110);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                next.setVisible(true);
-                prev.setVisible(true);
-
-                if (nrPage == 1) {
-                    prev.setVisible(false);
-                }
-                if (nrPage == fav.size() / 3 + 1) {
-                    next.setVisible(false);
+                try {
+                    Pane p = loader.load();
+                    ((RecipeBoxController) (loader.getController())).load(list.get((nrPage - 1) * 3 + i));
+                    pane.getChildren().add(p);
+                    p.setLayoutX(60);
+                    p.setLayoutY(20 + i * 110);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
     }
 
     @FXML
-    public void handleGoNext() throws Exception{
+    public void handleGoNext(){
         nrPage++;
         reloadPages();
     }
 
     @FXML
-    public void handleGoPrev() throws Exception{
+    public void handleGoPrev(){
         nrPage--;
         reloadPages();
     }

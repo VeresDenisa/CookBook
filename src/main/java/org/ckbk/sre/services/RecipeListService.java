@@ -1,5 +1,6 @@
 package org.ckbk.sre.services;
 
+import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.RecipeList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -22,45 +23,48 @@ public class RecipeListService {
                 recipeList.setToDo(toDo);
                 recipeList.setNow(now);
                 recipeList.setDone(done);
+                recipeListRepository.update(recipeList);
                 return;
             }
         }
         recipeListRepository.insert(new RecipeList(username, recipeId, fav,toDo, now, done));
-        System.out.println(recipeListRepository.find().toList().get(recipeListRepository.find().toList().size() - 1));
     }
 
     public static ArrayList<Integer> getMyFavRecipes(){
-        ArrayList<Integer> fav = new ArrayList<Integer>();
-        for(RecipeList rl: recipeListRepository.find()){
-            if(Objects.equals(UserService.getUser().getUsername(), rl.getUsername()) && rl.isFav()){
-                fav.add(rl.getRecipeId());
+        ArrayList<Integer> mine = new ArrayList<Integer>();
+        var l = recipeListRepository.find().toList();
+        for(RecipeList r : l){
+            if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isFav()) {
+                mine.add(r.getRecipeId());
             }
         }
-        return fav;
+        return mine;
     }
 
     public static ArrayList<Integer> getMyToDoRecipes(){
-        ArrayList<Integer> toDo = new ArrayList<Integer>();
-        for(RecipeList rl: recipeListRepository.find()){
-            if(Objects.equals(UserService.getUser().getUsername(), rl.getUsername()) && rl.isToDo()){
-                toDo.add(rl.getRecipeId());
+        ArrayList<Integer> mine = new ArrayList<Integer>();
+        var l = recipeListRepository.find().toList();
+        for(RecipeList r : l){
+            if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isToDo()) {
+                mine.add(r.getRecipeId());
             }
         }
-        return toDo;
+        return mine;
     }
 
     public static ArrayList<Integer> getMyDoneRecipes(){
-        ArrayList<Integer> done = new ArrayList<Integer>();
-        for(RecipeList rl: recipeListRepository.find()){
-            if(Objects.equals(UserService.getUser().getUsername(), rl.getUsername()) && rl.isToDo()){
-                done.add(rl.getRecipeId());
+        ArrayList<Integer> mine = new ArrayList<Integer>();
+        var l = recipeListRepository.find().toList();
+        for(RecipeList r : l){
+            if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isDone()) {
+                mine.add(r.getRecipeId());
             }
         }
-        return done;
+        return mine;
     }
 
     public static void showRecipesList(){
         for(RecipeList rl : recipeListRepository.find())
-            System.out.println(rl.getUsername() + "  " + rl.getUsername());
+            System.out.println(rl.getRecipeId() + "  " + rl.getUsername() + " fav:" + rl.isFav() + " now:" + rl.isNow() + " toDo:" + rl.isToDo() + " done:" + rl.isDone());
     }
 }

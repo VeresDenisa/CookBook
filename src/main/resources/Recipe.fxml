@@ -42,7 +42,7 @@
             </font>
         </Text>
 
-        <Text fx:id="author" layoutX="100.0" layoutY="80.0" wrappingWidth="200.0">
+        <Text fx:id="author" layoutX="100.0" layoutY="76.0" wrappingWidth="200.0">
          <font>
             <Font size="18.0" />
          </font></Text>
@@ -52,11 +52,11 @@
 
         <Text fx:id="description" layoutX="109.0" layoutY="159.0" wrappingWidth="494.0" />
 
-        <Text fx:id="addMessage" layoutX="630.0" layoutY="152.0" wrappingWidth="236.0" />
+        <Text fx:id="addMessage" layoutX="630.0" layoutY="152.0" textAlignment="CENTER" wrappingWidth="236.0" />
 
         <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
 
-        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="109.0" layoutY="85.0">
+        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="109.0" layoutY="89.0">
         </ImageView>
 
         <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="276.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
