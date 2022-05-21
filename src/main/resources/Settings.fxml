@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -40,6 +41,15 @@
 
         <Text fx:id="confirmationMessage" layoutX="309.0" layoutY="432.0" textAlignment="CENTER" wrappingWidth="283.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="419.05078125" />
         <Button layoutX="417.0" layoutY="448.0" onMouseClicked="#handleEditAction" prefHeight="25.0" prefWidth="68.0" text="EDIT" />
+
+        <Button layoutX="735.0" layoutY="444.0" onMouseClicked="#handleDeleteAccountAction">
+            <graphic>
+                <ImageView fitHeight="25.0" fitWidth="25.0">
+                    <Image url="@images/icon/icon_settings.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+
     </children>
 
 </AnchorPane>
