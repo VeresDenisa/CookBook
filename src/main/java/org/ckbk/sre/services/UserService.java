@@ -61,8 +61,9 @@ public class UserService {
                 } else throw new InvalidCredentialsException();
     }
 
-    private static void checkNewPassword(String passN, String passNC) throws NewPasswordIsNotConfirmedException{
-        if(!(passN.equals(passNC))) throw new NewPasswordIsNotConfirmedException();
+    private static void checkNewPassword(String passN, String passNC) throws NewPasswordIsNotConfirmedException {
+        if (!(passN.equals(passNC))) throw new NewPasswordIsNotConfirmedException();
+    }
 
     public static User getFirst(){
         return userRepository.find().toList().get(0);
@@ -106,7 +107,15 @@ public class UserService {
     public static User getUser(){
         return loggedInUser;
     }
+
     public static long getUserRepositorySize(){ return userRepository.size();}
+
+    public static User findUser(String username){
+        for(User user : userRepository.find())
+            if(Objects.equals(user.getUsername(), username))
+                return user;
+        return null;
+    }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {

@@ -36,19 +36,19 @@
                 </ImageView>
             </graphic></Button>
 
-        <Text fx:id="title" layoutX="100.0" layoutY="50.0" wrappingWidth="760.0">
+        <Text fx:id="title" layoutX="120.0" layoutY="47.0" wrappingWidth="735.0">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
 
-        <Text fx:id="author" layoutX="100.0" layoutY="76.0" wrappingWidth="200.0">
+        <Text fx:id="author" layoutX="120.0" layoutY="74.0" wrappingWidth="200.0">
          <font>
             <Font size="18.0" />
          </font></Text>
 
-        <Text fx:id="time" layoutX="320.0" layoutY="110.0" wrappingWidth="100.0" />
-        <Text fx:id="type" layoutX="460.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="time" layoutX="350.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="type" layoutX="477.0" layoutY="109.0" wrappingWidth="100.0" />
 
         <Text fx:id="description" layoutX="109.0" layoutY="159.0" wrappingWidth="494.0" />
 
@@ -56,11 +56,18 @@
 
         <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
 
-        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="109.0" layoutY="89.0">
+        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="120.0" layoutY="89.0">
         </ImageView>
 
-        <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="276.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="306.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/icon/icon_time.png" />
         </ImageView>
+
+      <Button fx:id="report" onMouseClicked="#handleReportUser" layoutX="68.0" layoutY="50.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="31.0">
+          <graphic>
+              <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@images/icon/icon_report.png" />
+              </ImageView>
+          </graphic></Button>
     </children>
 </AnchorPane>
