@@ -38,7 +38,7 @@
         <Label layoutX="319.0" layoutY="387.0" text="Password:" AnchorPane.leftAnchor="319.0" AnchorPane.topAnchor="387.0" />
         <PasswordField fx:id="passwordFieldConfirm" layoutX="401.0" layoutY="383.0" prefWidth="149.0" AnchorPane.leftAnchor="401.0" AnchorPane.topAnchor="383.0" />
 
-        <Text fx:id="registrationMessage" layoutX="309.0" layoutY="432.0" textAlignment="CENTER" wrappingWidth="283.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="419.05078125" />
+        <Text fx:id="confirmationMessage" layoutX="309.0" layoutY="432.0" textAlignment="CENTER" wrappingWidth="283.0" AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="419.05078125" />
         <Button layoutX="417.0" layoutY="448.0" onMouseClicked="#handleEditAction" prefHeight="25.0" prefWidth="68.0" text="EDIT" />
     </children>
 
