@@ -8,9 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.ckbk.sre.exceptions.EmptyInputFieldException;
-import org.ckbk.sre.exceptions.InvalidCredentialsException;
-import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
+import org.ckbk.sre.exceptions.*;
 import org.ckbk.sre.model.User;
 import org.ckbk.sre.services.UserService;
 
@@ -42,7 +40,7 @@ public class SignUpInController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), "Client");
             registrationMessage.setText("Client account created successfully!");
-        } catch (EmptyInputFieldException | UsernameAlreadyExistsException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException | PasswordComplexityIsTooLowException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

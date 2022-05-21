@@ -27,6 +27,7 @@ public class Main extends Application {
         RecipeService.initDatabase(database);
         RecipeListService.initDatabase(database);
         ProductService.initDatabase(database);
+        if(UserService.getUserRepositorySize() == 0) UserService.addUser("a", "a", "dennisa_dnns@yahoo.com", "0756134164", "admin", "admin", "Admin");
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
         primaryStageS.setTitle("SIGN IN / SIGN UP");
         primaryStageS.setScene(new Scene(root, 900, 500));
