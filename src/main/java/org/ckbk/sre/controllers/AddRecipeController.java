@@ -9,8 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.ckbk.sre.exceptions.EmptyInputFieldException;
-import org.ckbk.sre.exceptions.InputNotANumberException;
+import org.ckbk.sre.exceptions.*;
 import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
 
@@ -43,7 +42,7 @@ public class AddRecipeController {
             primaryStage.setResizable(false);
             primaryStage.show();
             org.ckbk.sre.Main.primaryStage = primaryStage;
-        } catch (EmptyInputFieldException | InputNotANumberException e) {
+        } catch (EmptyInputFieldException | InputNotANumberException | TimeIsNotPositiveException | NumberIsNotBetweenConstrainsException | InvalidImagePathException e) {
             errorMessage.setText(e.getMessage());
         }
     }

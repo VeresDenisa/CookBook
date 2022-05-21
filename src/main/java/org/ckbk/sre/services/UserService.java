@@ -1,16 +1,16 @@
 package org.ckbk.sre.services;
 
-import org.ckbk.sre.exceptions.EmptyInputFieldException;
+import org.ckbk.sre.exceptions.*;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
-import org.ckbk.sre.exceptions.InvalidCredentialsException;
 import org.ckbk.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserService {
 
@@ -21,12 +21,36 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, String role) throws UsernameAlreadyExistsException, EmptyInputFieldException {
+    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, String role) throws UsernameAlreadyExistsException, EmptyInputFieldException, PhoneNumberIsNotValidException, EmailAddressIsNotValidException, PasswordComplexityIsTooLowException {
         checkUserDoesNotAlreadyExist(username);
         checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
-        if(userRepository.size() == 0) userRepository.insert(new User("admin", encodePassword("admin", "admin"), "dennisa_dnns@yahoo.com", "0724569854", "Adminas", "Adminel", "Admin", "images/profile/row-2-column-1.png"));
+        //checkPasswordComplexity(password);
+        checkPhoneNumberIsValid(nrTel);
+        checkEmailAddressIsValid(mail);
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "images/profile/row-3-column-4.png"));
     }
+
+    private static void checkEmailAddressIsValid(String mail) throws EmailAddressIsNotValidException {
+        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+        Matcher mat = pattern.matcher(mail);
+        if(!mat.matches()) throw new EmailAddressIsNotValidException();
+    }
+
+    private static void checkPhoneNumberIsValid(String nrTel) throws PhoneNumberIsNotValidException{
+        try {
+            Integer.parseInt(nrTel);
+        } catch (NumberFormatException nfe) {
+            throw new PhoneNumberIsNotValidException();
+        }
+        if(nrTel.length() != 10) throw new PhoneNumberIsNotValidException();
+    }
+
+    private static void checkPasswordComplexity(String password) throws PasswordComplexityIsTooLowException {
+        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$");
+        Matcher mat = pattern.matcher(password);
+        if(!mat.matches()) throw new PasswordComplexityIsTooLowException();
+    }
+
     public static void logInUser(String username, String password) throws InvalidCredentialsException, EmptyInputFieldException {
         if(username.isEmpty() || password.isEmpty()) throw new EmptyInputFieldException();
         for (User user : userRepository.find()) {
@@ -44,6 +68,7 @@ public class UserService {
     public static User getUser(){
         return loggedInUser;
     }
+    public static long getUserRepositorySize(){ return userRepository.size();}
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {

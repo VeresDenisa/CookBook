@@ -2,8 +2,6 @@ package org.ckbk.sre.model;
 
 import org.dizitart.no2.objects.Id;
 
-import java.util.Objects;
-
 public class User {
     @Id
     private String username;
@@ -15,6 +13,7 @@ public class User {
     public enum ROLE{Client, Manager, Admin};
     private ROLE role;
     private String image;
+    private boolean reported;
 
     public User(String username, String password, String mail, String nrTel, String lastName, String firstName, String role, String image) {
         this.username = username;
@@ -23,13 +22,26 @@ public class User {
         this.nrTel = nrTel;
         this.lastName = lastName;
         this.firstName = firstName;
-        if(Objects.equals(role, "Client")) this.role = ROLE.Client;
-        else if(Objects.equals(role, "Admin")) this.role = ROLE.Admin;
-        else this.role = ROLE.Manager;
+        if(role.equals("Manager"))
+            this.role = ROLE.Manager;
+        else
+            if(role.equals("Admin"))
+                this.role = ROLE.Admin;
+            else
+                this.role = ROLE.Client;
         this.image = image;
+        this.reported = false;
     }
 
     public User(){
+    }
+
+    public boolean isReported() {
+        return reported;
+    }
+
+    public void setReported(boolean reported) {
+        this.reported = reported;
     }
 
     public String getUsername() {

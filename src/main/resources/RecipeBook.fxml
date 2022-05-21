@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.RecipeBookController">
     <children>
         <fx:include source="Sidebar.fxml" />
-      <Pagination layoutX="61.0" prefHeight="500.0" prefWidth="839.0" />
+
         <fx:include source="RecipeBox.fxml" id="recipeUp" layoutX="70.0" layoutY="20.0" />
         <fx:include source="RecipeBox.fxml" id="recipeMiddle" layoutX="70.0" layoutY="160.0" />
         <fx:include source="RecipeBox.fxml" id="recipeDown" layoutX="70.0" layoutY="300.0" />

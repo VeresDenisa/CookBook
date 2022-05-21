@@ -19,6 +19,6 @@
       <Text fx:id="time" layoutX="450.0" layoutY="73.0" textAlignment="CENTER" wrappingWidth="100.0" />
 
       <Text fx:id="stars" layoutX="600.0" layoutY="26.0" textAlignment="CENTER" wrappingWidth="73.0" />
-         <Button layoutX="600.0" layoutY="35.0" onMouseClicked="#handleOpenRecipeAction" prefHeight="50.0" prefWidth="73.0" text="Open" />
+         <Button fx:id="button" layoutX="600.0" layoutY="35.0" onMouseClicked="#handleOpenRecipeAction" prefHeight="50.0" prefWidth="73.0" text="Open" />
    </children>
 </AnchorPane>

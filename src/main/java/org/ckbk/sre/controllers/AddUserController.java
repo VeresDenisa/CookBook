@@ -6,8 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import org.ckbk.sre.exceptions.EmptyInputFieldException;
-import org.ckbk.sre.exceptions.UsernameAlreadyExistsException;
+import org.ckbk.sre.exceptions.*;
 import org.ckbk.sre.services.UserService;
 
 public class AddUserController {
@@ -33,7 +32,7 @@ public class AddUserController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), String.valueOf(roleField.getValue()));
             registrationMessage.setText(roleField.getValue() + " account created successfully!");
-        } catch (EmptyInputFieldException | UsernameAlreadyExistsException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException | PasswordComplexityIsTooLowException e) {
             registrationMessage.setText(e.getMessage());
         }
     }
