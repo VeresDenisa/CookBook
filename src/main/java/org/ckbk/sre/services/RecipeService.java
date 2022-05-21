@@ -8,6 +8,8 @@ import org.dizitart.no2.objects.ObjectRepository;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class RecipeService {
 
@@ -78,12 +80,16 @@ public class RecipeService {
         }
     }
 
-    public static long getRecipeRepositorySize(){
-        return recipeRepository.size();
+    public static ArrayList<Integer> getMyRecipes(){
+        ArrayList<Integer> mine = new ArrayList<Integer>();
+        for(Recipe r : recipeRepository.find()){
+            if(Objects.equals(r.getAuthor(), UserService.getUser().getUsername()))
+                mine.add(recipeRepository.find().toList().indexOf(r));
+        }
+        return mine;
     }
 
-    public static void showRecipes(){
-        for(Recipe r : recipeRepository.find())
-            System.out.println(r.getName());
+    public static long getRecipeRepositorySize(){
+        return recipeRepository.size();
     }
 }

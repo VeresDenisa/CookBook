@@ -9,10 +9,32 @@
     <children>
         <fx:include source="Sidebar.fxml" />
 
-        <Button layoutX="655.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToFavAction" text=" FAV " />
-        <Button layoutX="699.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToToDoAction" text="TO DO" />
-        <Button layoutX="752.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToNowAction" text=" NOW " />
-        <Button layoutX="804.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToDoneAction" text=" DONE " />
+        <Button fx:id="fav" layoutX="647.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToFavAction" prefHeight="40.0" prefWidth="49.0">
+             <graphic>
+                <ImageView fitHeight="31.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_heart.png" />
+                </ImageView>
+             </graphic></Button>
+
+        <Button fx:id="toDo" layoutX="699.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToToDoAction" prefHeight="40.0" prefWidth="49.0">
+            <graphic>
+                <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_list.png" />
+                </ImageView>
+            </graphic></Button>
+
+        <Button fx:id="now" layoutX="752.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToNowAction">
+            <graphic>
+                <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_now.png" />
+                </ImageView>
+            </graphic></Button>
+        <Button fx:id="done" layoutX="804.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToDoneAction">
+            <graphic>
+                <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_tick.png" />
+                </ImageView>
+            </graphic></Button>
 
         <Text fx:id="title" layoutX="100.0" layoutY="50.0" wrappingWidth="760.0">
             <font>
@@ -25,17 +47,20 @@
             <Font size="18.0" />
          </font></Text>
 
-        <Text fx:id="complexity" layoutX="100.0" layoutY="110.0" wrappingWidth="100.0" />
-        <Text fx:id="time" layoutX="220.0" layoutY="110.0" wrappingWidth="100.0" />
-        <Text fx:id="stars" layoutX="340.0" layoutY="110.0" wrappingWidth="100.0" />
+        <Text fx:id="time" layoutX="320.0" layoutY="110.0" wrappingWidth="100.0" />
         <Text fx:id="type" layoutX="460.0" layoutY="110.0" wrappingWidth="100.0" />
 
-        <Text fx:id="description" layoutX="150.0" layoutY="160.0" wrappingWidth="500.0" />
+        <Text fx:id="description" layoutX="109.0" layoutY="159.0" wrappingWidth="494.0" />
 
-        <Text fx:id="recipeId" layoutX="655.0" layoutY="134.0" wrappingWidth="206.0" />
-        <Text fx:id="addMessage" layoutX="655.0" layoutY="154.0" wrappingWidth="206.0" />
+        <Text fx:id="addMessage" layoutX="630.0" layoutY="152.0" wrappingWidth="236.0" />
 
-        <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
 
+        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="109.0" layoutY="85.0">
+        </ImageView>
+
+        <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="276.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/icon/icon_time.png" />
+        </ImageView>
     </children>
 </AnchorPane>

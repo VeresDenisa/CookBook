@@ -34,7 +34,7 @@ public class Main extends Application {
         primaryStageS.setResizable(false);
         primaryStageS.show();
         primaryStage = primaryStageS;
-        RecipeService.showRecipes();
+        RecipeListService.showRecipesList();
     }
 
     private void initDirectory() {

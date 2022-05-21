@@ -7,51 +7,16 @@
    <children>
       <fx:include source="Sidebar.fxml" />
 
-      <TabPane layoutX="61.0" prefHeight="500.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE">
-          <tabs>
-              <Tab text="My Recipes">
-                  <content>
-                      <Pane fx:id="paneMine" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
-                      </Pane>
-                      <Button fx:id="firstMine" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
-                      <Button fx:id="prevMine" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
-                      <Button fx:id="nextMine" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
-                      <Button fx:id="lastMine" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
-                  </content>
-              </Tab>
-              <Tab text="Favourite Recipes">
-                  <content>
-                      <Pane fx:id="paneFav" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
-                      </Pane>
-                      <Button fx:id="firstFav" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
-                      <Button fx:id="prevFav" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
-                      <Button fx:id="nextFav" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
-                      <Button fx:id="lastFav" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
-                  </content>
-              </Tab>
-              <Tab text="Done Recipes">
-                  <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
-                  </content>
-              </Tab>
-              <Tab text="To Do Recipes">
-                  <content>
-                      <Pane fx:id="paneToDo" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
-                      </Pane>
-                      <Button fx:id="firstToDo" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
-                      <Button fx:id="prevToDo" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
-                      <Button fx:id="nextToDo" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
-                      <Button fx:id="lastToDo" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
-                  </content>
-              </Tab>
-              <Tab text="Now Recipes">
-                  <content>
+       <Pane fx:id="pane" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+       </Pane>
+       <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
+       <Button fx:id="next" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
 
-                      <Pane fx:id="paneNow" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
-                      </Pane>
-                  </content>
-              </Tab>
-          </tabs>
-      </TabPane>
+      <Button onMouseClicked="#handleGoMine" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="MINE" />
+      <Button onMouseClicked="#handleGoFav" layoutX="382.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="FAV" />
+      <Button onMouseClicked="#handleGoToDo" layoutX="435.0" layoutY="14.0" mnemonicParsing="false" text="TO DO" />
+      <Button onMouseClicked="#handleGoDone" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="DONE" />
+       <Button onMouseClicked="#handleGoNow" layoutX="541.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="NOW" />
+
    </children>
 </AnchorPane>
