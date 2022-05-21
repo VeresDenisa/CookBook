@@ -30,6 +30,40 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "images/profile/row-3-column-4.png"));
     }
 
+    public static void editUser(String password, String lastName, String firstName, String mail, String nrTel, String passN, String passNC) throws PhoneNumberIsNotValidException, EmailAddressIsNotValidException, PasswordComplexityIsTooLowException, NewPasswordIsNotConfirmedException, InvalidCredentialsException {
+        //checkPasswordComplexity(password);
+        for(User user : userRepository.find())
+            if(Objects.equals(user, loggedInUser))
+                if (loggedInUser.getPassword().equals(encodePassword(loggedInUser.getUsername(), password))) {
+                    if (!(firstName.isEmpty())) loggedInUser.setFirstName(firstName);
+                    if (!(lastName.isEmpty())) loggedInUser.setLastName(lastName);
+                    if (!(nrTel.isEmpty())) {
+                        checkPhoneNumberIsValid(nrTel);
+                        loggedInUser.setNrTel(nrTel);
+                    }
+                    if (!(mail.isEmpty())) {
+                        checkEmailAddressIsValid(mail);
+                        loggedInUser.setMail(mail);
+                    }
+                    if (!(passN.isEmpty()) && !(passNC.isEmpty())) {
+                        checkNewPassword(passN, passNC);
+                        loggedInUser.setPassword(encodePassword(loggedInUser.getUsername(), passN));
+                    }
+                    userRepository.update(loggedInUser);
+                } else throw new InvalidCredentialsException();
+    }
+
+    public static void deleteAccount(String password) throws InvalidCredentialsException {
+        for(User user : userRepository.find())
+            if(Objects.equals(user, loggedInUser))
+                if (loggedInUser.getPassword().equals(encodePassword(loggedInUser.getUsername(), password))) {
+                    userRepository.remove(loggedInUser);
+                } else throw new InvalidCredentialsException();
+    }
+
+    private static void checkNewPassword(String passN, String passNC) throws NewPasswordIsNotConfirmedException{
+        if(!(passN.equals(passNC))) throw new NewPasswordIsNotConfirmedException();
+
     public static User getFirst(){
         return userRepository.find().toList().get(0);
     }

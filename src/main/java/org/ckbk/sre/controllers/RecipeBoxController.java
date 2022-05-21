@@ -13,7 +13,7 @@ import org.ckbk.sre.services.RecipeService;
 
 public class RecipeBoxController {
     @FXML
-    public Text type;
+    private Text type;
     @FXML
     private Text title;
     @FXML
