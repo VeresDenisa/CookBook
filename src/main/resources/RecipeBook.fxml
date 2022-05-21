@@ -6,10 +6,13 @@
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.RecipeBookController">
     <children>
         <fx:include source="Sidebar.fxml" />
-      
-        <fx:include source="RecipeBox.fxml" id="recipeUp" layoutX="70.0" layoutY="20.0" />
-        <fx:include source="RecipeBox.fxml" id="recipeMiddle" layoutX="70.0" layoutY="160.0" />
-        <fx:include source="RecipeBox.fxml" id="recipeDown" layoutX="70.0" layoutY="300.0" />
+
+      <Pane fx:id="pane" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+      </Pane>
+        <Button fx:id="first" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
+        <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
+        <Button fx:id="next" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
+        <Button fx:id="last" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
 
     </children>
 </AnchorPane>

@@ -31,10 +31,9 @@ public class RecipeController {
     private ImageView image;
 
     @FXML
-    public void initialize() {
-        Recipe recipe = RecipeService.getRecipe(1);
+    public void initialize(int i) {
+        Recipe recipe = RecipeService.getRecipe(i);
         title.setText(recipe.getName());
-        recipeId.setText(String.valueOf(recipe.getRecipeId()));
         author.setText(recipe.getAuthor());
         image.setImage(new Image(recipe.getImage()));
         if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");

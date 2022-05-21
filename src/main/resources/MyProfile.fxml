@@ -11,17 +11,22 @@
           <tabs>
               <Tab text="My Recipes">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="532.0">
-                     <children>
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="20.0" />
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="160.0" />
-                         <fx:include source="RecipeBox.fxml"  layoutX="70.0" layoutY="300.0" />
-                     </children></AnchorPane>
+                      <Pane fx:id="paneMine" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+                      </Pane>
+                      <Button fx:id="firstMine" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
+                      <Button fx:id="prevMine" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
+                      <Button fx:id="nextMine" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
+                      <Button fx:id="lastMine" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
                   </content>
               </Tab>
               <Tab text="Favourite Recipes">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
+                      <Pane fx:id="paneFav" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+                      </Pane>
+                      <Button fx:id="firstFav" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
+                      <Button fx:id="prevFav" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
+                      <Button fx:id="nextFav" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
+                      <Button fx:id="lastFav" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
                   </content>
               </Tab>
               <Tab text="Done Recipes">
@@ -31,12 +36,19 @@
               </Tab>
               <Tab text="To Do Recipes">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
+                      <Pane fx:id="paneToDo" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+                      </Pane>
+                      <Button fx:id="firstToDo" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst" text="First" />
+                      <Button fx:id="prevToDo" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" text="Prev" />
+                      <Button fx:id="nextToDo" layoutX="461.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" text="Next" />
+                      <Button fx:id="lastToDo" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast" text="Last" />
                   </content>
               </Tab>
               <Tab text="Now Recipes">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="365.0" prefWidth="545.0" />
+
+                      <Pane fx:id="paneNow" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+                      </Pane>
                   </content>
               </Tab>
           </tabs>

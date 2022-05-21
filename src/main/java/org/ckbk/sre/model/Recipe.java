@@ -1,9 +1,6 @@
 package org.ckbk.sre.model;
 
-import org.ckbk.sre.services.RecipeService;
-
 public class Recipe {
-    private long recipeId;
     private String name;
     private String author;
     private int complexity;
@@ -25,7 +22,6 @@ public class Recipe {
         this.image = image;
         this.type = type;
         this.stars = 0;
-        this.recipeId = RecipeService.getRecipeRepositorySize() + 1;
         this.approved = false;
     }
 
@@ -69,10 +65,6 @@ public class Recipe {
         return time;
     }
 
-    public void setRecipeId(long recipeId) {
-        this.recipeId = recipeId;
-    }
-
     public void setTime(int time) {
         this.time = time;
     }
@@ -109,7 +101,4 @@ public class Recipe {
         return type;
     }
 
-    public long getRecipeId() {
-        return recipeId;
-    }
 }

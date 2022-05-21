@@ -33,9 +33,8 @@ public class RecipeBoxController {
     private Button button;
 
     @FXML
-    public void initialize() {
-        if(RecipeService.getRecipeRepositorySize() >= 1) {
-            Recipe recipe = RecipeService.getRecipe(1);
+    public void load(int i) {
+            Recipe recipe = RecipeService.getRecipe(i);
             title.setText(recipe.getName());
             image.setImage(new Image(recipe.getImage()));
             author.setText(recipe.getAuthor());
@@ -46,10 +45,6 @@ public class RecipeBoxController {
             complexity.setText(recipe.getComplexity() + " / 5");
             time.setText(recipe.getTime() / 60 + "h " + recipe.getTime() % 60 + "m");
             stars.setText(recipe.getStars() + " / 5");
-        }
-        else{
-            button.setVisible(false);
-        }
     }
 
     @FXML

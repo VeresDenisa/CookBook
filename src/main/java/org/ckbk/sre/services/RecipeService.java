@@ -26,12 +26,16 @@ public class RecipeService {
         switch (type) {
             case "Breakfast":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Breakfast));
+                break;
             case "Lunch":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Lunch));
+                break;
             case "Dinner":
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Dinner));
+                break;
             default:
                 recipeRepository.insert(new Recipe(name, author.getUsername(), Integer.parseInt(complexity), Integer.parseInt(time), image, description, Recipe.TYPE.Other));
+                break;
         }
     }
 
@@ -66,15 +70,20 @@ public class RecipeService {
             throw new NumberIsNotBetweenConstrainsException();
     }
 
-    public static Recipe getRecipe(long i){
-        for (Recipe recipe : recipeRepository.find()) {
-            if(recipe.getRecipeId() == i)
-                return recipe;
+    public static Recipe getRecipe(int i){
+        try{
+            return recipeRepository.find().toList().get(i);
+        }catch(IndexOutOfBoundsException e){
+            return null;
         }
-        return null;
     }
 
     public static long getRecipeRepositorySize(){
         return recipeRepository.size();
+    }
+
+    public static void showRecipes(){
+        for(Recipe r : recipeRepository.find())
+            System.out.println(r.getName());
     }
 }
