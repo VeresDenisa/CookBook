@@ -86,4 +86,15 @@ public class SidebarController {
         org.ckbk.sre.Main.primaryStage = primaryStage;
     }
 
+    @FXML
+    public void handleGoSettingsAction() throws Exception {
+        org.ckbk.sre.Main.primaryStage.close();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Settings.fxml"));
+        primaryStage.setTitle("SIGN IN / SIGN UP");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        org.ckbk.sre.Main.primaryStage = primaryStage;
+    }
 }
