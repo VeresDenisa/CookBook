@@ -14,6 +14,8 @@ import org.ckbk.sre.services.UserService;
 
 public class AddProductController {
     @FXML
+    public TextField measurementField;
+    @FXML
     private TextField nameField;
     @FXML
     private TextField priceField;
@@ -23,11 +25,13 @@ public class AddProductController {
     private TextField imageField;
     @FXML
     private Text errorMessage;
+    @FXML
+    private TextField availableField;
 
     @FXML
     public void handleAddProductAction() throws Exception{
         try {
-            ProductService.addProduct(nameField.getText(), imageField.getText(), UserService.getUser().getUsername(), quantityField.getText(), priceField.getText());
+            ProductService.addProduct(nameField.getText(), imageField.getText(), UserService.getUser().getUsername(), quantityField.getText(), priceField.getText(), measurementField.getText(), availableField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));

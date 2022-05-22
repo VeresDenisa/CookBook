@@ -1,6 +1,5 @@
 package org.ckbk.sre.model;
 
-import org.ckbk.sre.services.ProductService;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
@@ -12,16 +11,17 @@ public class Product {
     private String username;
     private float price;
     private float quantity;
+    private String measurement;
+    private float available;
 
-    private long productId;
-
-    public Product(String name, String image, String username, float quantity, float price) {
+    public Product(String name, String image, String username, float quantity, float price, String measurement, float available) {
         this.image = image;
         this.name = name;
         this.username = username;
         this.price = price;
         this.quantity = quantity;
-        this.productId = ProductService.getProductRepositorySize() + 1;
+        this.measurement = measurement;
+        this.available = available;
     }
 
     public Product(){
@@ -68,11 +68,19 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void setProductId(long productId) {
-        this.productId = productId;
+    public String getMeasurement() {
+        return measurement;
     }
 
-    public long getProductId() {
-        return productId;
+    public void setMeasurement(String measurement) {
+        this.measurement = measurement;
+    }
+
+    public float getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(float available) {
+        this.available = available;
     }
 }

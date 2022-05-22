@@ -15,31 +15,24 @@ public class ProductService {
         productRepository = database.getRepository(Product.class);
     }
 
-    public static void addProduct(String name, String image, String username, String quantity, String  price) throws EmptyInputFieldException, InputNotANumberException {
+    public static void addProduct(String name, String image, String username, String quantity, String  price, String measurement, String available) throws EmptyInputFieldException, InputNotANumberException {
         checkInputFieldsAreFilled(name, image, quantity, price);
-        checkInputIsANumber(quantity, price);
-        productRepository.insert(new Product(name, image, username, Float.parseFloat(quantity), Float.parseFloat(price)));
+        checkInputIsANumber(quantity, price, available);
+        productRepository.insert(new Product(name, image, username, Float.parseFloat(quantity), Float.parseFloat(price), measurement, Float.parseFloat(available)));
     }
 
     private static void checkInputFieldsAreFilled(String name, String image, String quantity, String  price) throws EmptyInputFieldException {
         if(name.isEmpty() || image.isEmpty() || quantity.isEmpty() || price.isEmpty()) throw new EmptyInputFieldException();
     }
 
-    private static void checkInputIsANumber(String quantity, String price) throws InputNotANumberException {
+    private static void checkInputIsANumber(String quantity, String price, String available) throws InputNotANumberException {
         try {
             Float.parseFloat(quantity);
             Float.parseFloat(price);
+            Float.parseFloat(available);
         } catch (NumberFormatException nfe) {
             throw new InputNotANumberException();
         }
-    }
-
-    public static Product getProduct(long i){
-        for (Product product : productRepository.find()) {
-            if(product.getProductId() == i)
-                return product;
-        }
-        return null;
     }
 
     public static long getProductRepositorySize(){

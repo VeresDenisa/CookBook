@@ -1,7 +1,6 @@
 package org.ckbk.sre.services;
 
 import org.ckbk.sre.exceptions.*;
-import org.ckbk.sre.model.RecipeList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.ckbk.sre.model.User;
