@@ -3,6 +3,9 @@ package org.ckbk.sre.model;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class Recipe {
     @Id
     private NitriteId id;
@@ -12,11 +15,13 @@ public class Recipe {
     private int time;
     private String image;
     private String description;
-    private int stars;
     private boolean approved;
 
     public enum TYPE{Breakfast, Lunch, Dinner, Other}
     private TYPE type;
+
+    private ArrayList<String> ingredientName;
+    private ArrayList<Integer> ingredientQuantity;
 
     public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type) {
         this.name = name;
@@ -26,8 +31,25 @@ public class Recipe {
         this.time = time;
         this.image = image;
         this.type = type;
-        this.stars = 0;
         this.approved = false;
+        this.ingredientName = new ArrayList<>();
+        this.ingredientQuantity = new ArrayList<>();
+    }
+
+    public int getIngredientName(String name){
+        for (int i = 0; i < this.ingredientName.size(); i++)
+            if(this.ingredientName.get(i) != null && Objects.equals(name, this.ingredientName.get(i)))
+                return i;
+        return -1;
+    }
+
+    public void addIngredient(String n, Integer q, String m){
+        if(getIngredientName(n) == -1) {
+            this.ingredientQuantity.add(q);
+            this.ingredientName.add(n);
+        }else{
+            this.ingredientQuantity.set(getIngredientName(n), q + this.ingredientQuantity.get(getIngredientName(n)));
+        }
     }
 
     public Recipe(){
@@ -92,14 +114,6 @@ public class Recipe {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getStars() {
-        return stars;
-    }
-
-    public void setStars(int stars) {
-        this.stars = stars;
     }
 
     public TYPE getType() {
