@@ -4,37 +4,42 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.RecipeBookController">
-    <children>
-        <fx:include source="Sidebar.fxml" />
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.ckbk.sre.controllers.RecipeBookController">
+    <fx:include source="Sidebar.fxml"/>
 
-      <Pane fx:id="pane" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
-      </Pane>
+    <Pane fx:id="pane" layoutX="61.0" layoutY="85.0" prefHeight="361.0" prefWidth="841.0">
+    </Pane>
 
-        <Button fx:id="first" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst">
-            <graphic>
-                <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_first.png" />
-                </ImageView>
-            </graphic></Button>
-        <Button fx:id="prev" layoutX="407.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" prefHeight="27.0" prefWidth="30.0">
-            <graphic>
-                <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_prev.png" />
-                </ImageView>
-            </graphic></Button>
-        <Button fx:id="next" layoutX="467.0" layoutY="462.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" prefHeight="27.0" prefWidth="30.0">
-            <graphic>
-                <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_next.png" />
-                </ImageView>
-            </graphic></Button>
-        <Button fx:id="last" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast">
-            <graphic>
-                <ImageView fitHeight="61.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_last.png" />
-                </ImageView>
-            </graphic></Button>
+    <Button fx:id="first" layoutX="332.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoFirst">
+        <graphic>
+            <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_first.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="prev" layoutX="407.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev"
+            prefHeight="27.0" prefWidth="30.0">
+        <graphic>
+            <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_prev.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="next" layoutX="467.0" layoutY="462.0" mnemonicParsing="false" onMouseClicked="#handleGoNext"
+            prefHeight="27.0" prefWidth="30.0">
+        <graphic>
+            <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_next.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="last" layoutX="533.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoLast">
+        <graphic>
+            <ImageView fitHeight="61.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_last.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
 
-    </children>
 </AnchorPane>

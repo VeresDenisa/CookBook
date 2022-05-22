@@ -59,7 +59,7 @@ public class RecipeBookController {
             first.setVisible(false);
             prev.setVisible(false);
         }
-        if(nrPage == RecipeService.getRecipeRepositorySize() / 3 + 1){
+        if(nrPage == (RecipeService.getRecipeRepositorySize() - 1) / 3 + 1){
             next.setVisible(false);
             last.setVisible(false);
         }
@@ -85,7 +85,7 @@ public class RecipeBookController {
 
     @FXML
     public void handleGoLast() throws Exception{
-        nrPage = (int)RecipeService.getRecipeRepositorySize() / 3 + 1;
+        nrPage = (int)((RecipeService.getRecipeRepositorySize() - 1) / 3 + 1);
         reloadPages();
     }
 }

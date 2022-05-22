@@ -2,7 +2,7 @@ package org.ckbk.sre.exceptions;
 
 public class UsernameAlreadyExistsException extends Exception {
 
-    private String username;
+    private final String username;
 
     public UsernameAlreadyExistsException(String username) {
         super(String.format("An account with the username %s already exists!", username));
@@ -10,6 +10,6 @@ public class UsernameAlreadyExistsException extends Exception {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 }

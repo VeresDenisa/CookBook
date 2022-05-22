@@ -78,7 +78,7 @@ public class SettingsController {
 
     public void handleDeleteAccountAction() {
         try {
-            UserService.deleteAccount(passwordFieldConfirm.getText());
+            UserService.deleteMyAccount(passwordFieldConfirm.getText());
 
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();

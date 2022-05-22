@@ -1,6 +1,11 @@
 package org.ckbk.sre.model;
 
+import org.dizitart.no2.NitriteId;
+import org.dizitart.no2.objects.Id;
+
 public class Recipe {
+    @Id
+    private NitriteId id;
     private String name;
     private String author;
     private int complexity;

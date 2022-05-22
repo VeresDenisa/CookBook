@@ -11,7 +11,12 @@ import org.ckbk.sre.services.RecipeListService;
 import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
 
+import java.util.Objects;
+
 public class RecipeController {
+    @FXML
+    public Button report;
+
     @FXML
     private Text title;
     @FXML
@@ -26,6 +31,8 @@ public class RecipeController {
     private Text description;
     @FXML
     private Text addMessage;
+    @FXML
+    private Text userMessage;
     @FXML
     private ImageView image;
 
@@ -79,11 +86,13 @@ public class RecipeController {
             toDo.setVisible(true);
             now.setVisible(true);
             done.setVisible(true);
+            report.setVisible(UserService.findUser(recipe.getAuthor()).getRole() == User.ROLE.Client && !(Objects.equals(UserService.findUser(recipe.getAuthor()), UserService.getUser())));
         }else{
             fav.setVisible(false);
             toDo.setVisible(false);
             now.setVisible(false);
             done.setVisible(false);
+            report.setVisible(false);
         }
     }
 
@@ -109,5 +118,10 @@ public class RecipeController {
     public void handleAddToDoneAction() {
         RecipeListService.addRecipeList(UserService.getUser().getUsername(), index, false, false, true, false);
         addMessage.setText("Recipe added to My Done Recipes!");
+    }
+
+    public void handleReportUser() {
+        UserService.reportClient(RecipeService.getRecipeRepository().find().toList().get(index).getAuthor());
+        userMessage.setText("User reported!");
     }
 }

@@ -1,8 +1,12 @@
 package org.ckbk.sre.model;
 
 import org.ckbk.sre.services.ProductService;
+import org.dizitart.no2.NitriteId;
+import org.dizitart.no2.objects.Id;
 
 public class Product {
+    @Id
+    private NitriteId id;
     private String image;
     private String name;
     private String username;
