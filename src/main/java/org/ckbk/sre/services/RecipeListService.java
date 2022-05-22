@@ -1,8 +1,10 @@
 package org.ckbk.sre.services;
 
+import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.RecipeList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.h2.store.fs.FileUtils;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -62,5 +64,9 @@ public class RecipeListService {
             }
         }
         return mine;
+    }
+
+    public static ObjectRepository<RecipeList> getRecipesListRepository() {
+        return recipeListRepository;
     }
 }
