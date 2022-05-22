@@ -2,8 +2,11 @@ package org.ckbk.sre.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.ckbk.sre.Main;
 import org.ckbk.sre.services.OrderService;
 
@@ -45,17 +48,18 @@ public class MyManagerProfileController {
         }
 
         if (!(list.isEmpty())) {
-            for (int i = 0; i < 4; i++) {
-                if ((nrPage - 1) * 4 + i >= list.size()) continue;
+            for (int i = 0; i < 8; i++) {
+                if ((nrPage - 1) * 8 + i >= list.size()) continue;
 
                 FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("OrderBox.fxml"));
 
                 try {
                     Pane p = loader.load();
-                    ((OrderBoxController) (loader.getController())).load(list.get((nrPage - 1) * 4 + i));
+                    ((OrderBoxController) (loader.getController())).load(list.get((nrPage - 1) * 8 + i));
                     pane.getChildren().add(p);
-                    p.setLayoutX(180);
-                    p.setLayoutY(40 + i * 120);
+                    if(i < 4) p.setLayoutY(20);
+                    else p.setLayoutY(205);
+                    p.setLayoutX(40 + (i % 4) * 175);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -79,13 +83,20 @@ public class MyManagerProfileController {
         nrPage--;
         reloadPages();
     }
+
     public void handleGoOrders() {
         nrPage = 1;
         reloadPages();
     }
 
-    public void handleGoStatistics() {
-        nrPage = 1;
-        reloadPages();
+    public void handleGoStatistics() throws IOException {
+        org.ckbk.sre.Main.primaryStage.close();
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyManagerStatistics.fxml"));
+        primaryStage.setTitle("MY PROFILE");
+        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        org.ckbk.sre.Main.primaryStage = primaryStage;
     }
 }

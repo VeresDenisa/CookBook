@@ -33,7 +33,7 @@ public class OrderBoxController {
         date.setText("Date: " + order.getDate());
         if(order.isSent()) sent.setText("Complete");
         else sent.setText("Incomplete");
-        totalPrice.setText("Total: " + order.getTotalPrice() + " RON");
+        totalPrice.setText("Total: " + String.format("%.2f", order.getTotalPrice()) + " RON");
         productNumber.setText("Number of products: " + order.getIngredientsNumber());
     }
 
