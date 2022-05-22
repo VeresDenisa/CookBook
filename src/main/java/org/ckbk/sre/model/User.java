@@ -10,7 +10,7 @@ public class User {
     private String nrTel;
     private String lastName;
     private String firstName;
-    public enum ROLE{Client, Manager, Admin};
+    public enum ROLE{Client, Manager, Admin}
     private ROLE role;
     private String image;
     private boolean reported;
@@ -22,13 +22,10 @@ public class User {
         this.nrTel = nrTel;
         this.lastName = lastName;
         this.firstName = firstName;
-        if(role.equals("Manager"))
-            this.role = ROLE.Manager;
+        if(role.equals("Manager")) this.role = ROLE.Manager;
         else
-            if(role.equals("Admin"))
-                this.role = ROLE.Admin;
-            else
-                this.role = ROLE.Client;
+            if(role.equals("Admin")) this.role = ROLE.Admin;
+            else this.role = ROLE.Client;
         this.image = image;
         this.reported = false;
     }

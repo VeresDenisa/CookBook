@@ -24,7 +24,7 @@ public class Main extends Application {
     public void start(Stage primaryStageS) throws Exception {
         initDirectory();
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("UserFile.db").toFile())
+                .filePath(getPathToFile("CKBK.db").toFile())
                 .openOrCreate("test", "test");
         UserService.initDatabase(database);
         RecipeService.initDatabase(database);

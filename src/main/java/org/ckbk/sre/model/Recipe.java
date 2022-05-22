@@ -23,6 +23,11 @@ public class Recipe {
     private ArrayList<String> ingredientName;
     private ArrayList<Integer> ingredientQuantity;
 
+    public ArrayList<String> getIngredientName(){ return this.ingredientName;}
+    public void setIngredientName(ArrayList<String> e) { this.ingredientName = e;}
+    public ArrayList<Integer> getIngredientQuantity(){ return this.ingredientQuantity;}
+    public void setIngredientQuantity(ArrayList<Integer> e) { this.ingredientQuantity = e;}
+
     public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type) {
         this.name = name;
         this.author = author;

@@ -39,7 +39,7 @@ public class SignUpInController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), "Client");
             registrationMessage.setText("Client account created successfully!");
-        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException | PasswordComplexityIsTooLowException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

@@ -93,7 +93,7 @@ public class RecipeService {
     }
 
     public static ArrayList<Integer> getMyRecipes(){
-        ArrayList<Integer> mine = new ArrayList<Integer>();
+        ArrayList<Integer> mine = new ArrayList<>();
         var l = recipeRepository.find().toList();
         for(Recipe r : l){
             if(Objects.equals(r.getAuthor(), UserService.getUser().getUsername())) {
