@@ -4,6 +4,7 @@ import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Recipe {
     @Id
@@ -21,7 +22,6 @@ public class Recipe {
 
     private ArrayList<String> ingredientName;
     private ArrayList<Integer> ingredientQuantity;
-    private ArrayList<String> ingredientMeasurement;
 
     public Recipe(String name, String author, int complexity, int time, String image, String description, TYPE type) {
         this.name = name;
@@ -32,21 +32,24 @@ public class Recipe {
         this.image = image;
         this.type = type;
         this.approved = false;
-        this.ingredientMeasurement = new ArrayList<>();
         this.ingredientName = new ArrayList<>();
         this.ingredientQuantity = new ArrayList<>();
     }
 
-    public void addMeasurement(String ceva){
-        this.ingredientMeasurement.add(ceva);
+    public int getIngredientName(String name){
+        for (int i = 0; i < this.ingredientName.size(); i++)
+            if(this.ingredientName.get(i) != null && Objects.equals(name, this.ingredientName.get(i)))
+                return i;
+        return -1;
     }
 
-    public void addQuantity(Integer ceva){
-        this.ingredientQuantity.add(ceva);
-    }
-
-    public void addName(String ceva){
-        this.ingredientName.add(ceva);
+    public void addIngredient(String n, Integer q, String m){
+        if(getIngredientName(n) == -1) {
+            this.ingredientQuantity.add(q);
+            this.ingredientName.add(n);
+        }else{
+            this.ingredientQuantity.set(getIngredientName(n), q + this.ingredientQuantity.get(getIngredientName(n)));
+        }
     }
 
     public Recipe(){

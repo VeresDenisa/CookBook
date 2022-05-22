@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.ckbk.sre.model.Order;
+import org.ckbk.sre.model.Product;
 import org.ckbk.sre.services.*;
 import org.dizitart.no2.Nitrite;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import static org.ckbk.sre.services.FileSystemService.getPathToFile;
 
@@ -43,14 +45,24 @@ public class Main extends Application {
             RecipeService.addRecipe("Grilled Chicken", UserService.findUser("andy"), "4", "100", "Lunch", "images/recipes/recipe_5.jpg", "Blend Spread with Italian seasoning in small bowl. Brush chicken and vegetables with seasoning mixture. Grill or broil chicken and vegetables, turning occasionally, until chicken is thoroughly cooked and vegetables are tender. Serve chicken and vegetables with hot Knorr® Rice Sides™ - Cheddar Broccoli.");
             RecipeService.addRecipe("French Potato Salad", UserService.findUser("marius"), "5", "120", "Lunch", "images/recipes/recipe_6.jpg", "1) Drop the white and red potatoes into a large pot of boiling salted water and cook for 20 to 30 minutes, until they are just cooked through. Drain in a colander and place a towel over the potatoes to allow them to steam for 10 more minutes. As soon as you can handle them, cut in half (quarters if the potatoes are larger) and place in a medium bowl. Toss gently with the wine and chicken stock. Allow the liquids to soak into the warm potatoes before proceeding. Combine the vinegar, mustard, 1/2 tsp salt and 1/4 tsp pepper and slowly whisk in the olive oil to make an emulsion. Add the vinaigrette to the potatoes. Add the spring onions, dill, parsley, basil, 1 1/2 tsp salt and 1/2 tsp pepper and toss. Serve warm or at room temperature.");
             ProductService.addProduct("Milk", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "5.24", "L", "20");
-            ProductService.addProduct("Eggs", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "10", "9.97", "10 pieces", "0");
-            ProductService.addProduct("Chicken Breasts", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1000", "12.55", "g", "4000");
+            ProductService.addProduct("Eggs", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "10", "9.97", "10 pieces", "30");
+            ProductService.addProduct("Chicken Breasts", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "12.55", "Kg", "4");
             ProductService.addProduct("Chocolate Bar", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "15.00", "piece", "2");
-            ProductService.addProduct("Candy Bar", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "3.11", "piece", "6");
+            ProductService.addProduct("Candy Bar", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "3.11", "piece", "0");
             ProductService.addProduct("Sprinkles", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "1", "5.24", "L", "20");
             ProductService.addProduct("Natural Yogurt", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "250", "6.24", "g", "1750");
             ProductService.addProduct("Strawberries", "images/recipes/recipe_0.jpg", UserService.findUser("manager").getUsername(), "500", "26.18", "g", "1500");
-            OrderService.addOrder(UserService.findUser("andy").getUsername());
+            ArrayList<Product> product = new ArrayList<Product>();
+            ArrayList<Integer> quantity = new ArrayList<Integer>();
+            product.add(ProductService.findProduct("manager", "Milk"));
+            quantity.add(3);
+            product.add(ProductService.findProduct("manager", " Eggs"));
+            quantity.add(30);
+            product.add(ProductService.findProduct("manager", "Strawberries"));
+            quantity.add(500);
+            product.add(ProductService.findProduct("manager", "Chicken Breasts"));
+            quantity.add(2);
+            OrderService.addOrder("andy", "manager", true, product, quantity);
         }
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
         primaryStageS.setTitle("SIGN IN / SIGN UP");

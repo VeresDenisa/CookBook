@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import org.ckbk.sre.Main;
 import org.ckbk.sre.services.OrderService;
-import org.ckbk.sre.services.UserService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,52 +19,53 @@ public class MyManagerProfileController {
     private Button next;
 
     private int nrPage;
-    private int current;
 
     @FXML
     public void initialize(){
         nrPage = 1;
-        current = 1;
         reloadPages();
     }
 
-    public void reloadPages(){
-//        while (pane.getChildren().size() != 0) {
-//            pane.getChildren().remove(0);
-//        }
-//        next.setVisible(true);
-//        prev.setVisible(true);
-//
-//        if (nrPage == 1) {
-//            prev.setVisible(false);
-//        }
-//
-//        ArrayList<Integer> list;
-//        if(current == 1)
-//            list = OrderService.getOrders();
-//
-//        assert list != null;
-//        if (nrPage == ((list.size() - 1) / 8 + 1) || list.isEmpty()) {
-//            next.setVisible(false);
-//        }
-//
-//        if(!(list.isEmpty())) {
-//            for (int i = 0; i < 3; i++) {
-//                if ((nrPage - 1) * 3 + i >= list.size()) continue;
-//                FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("UserBox.fxml"));
-//
-//                try {
-//                    Pane p = loader.load();
-//                    ((UserBoxController) (loader.getController())).load(UserService.findUser(list.get((nrPage - 1) * 3 + i)));
-//                    pane.getChildren().add(p);
-//                    if(i % 2 == 0) p.setLayoutX(40);
-//                    p.setLayoutY(40 + i * 120);
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+    public void reloadPages() {
+        while (pane.getChildren().size() != 0) {
+            pane.getChildren().remove(0);
+        }
+
+        next.setVisible(true);
+        prev.setVisible(true);
+
+        if (nrPage == 1) {
+            prev.setVisible(false);
+        }
+        ArrayList<Integer> list;
+        list = OrderService.getMySentOrders();
+
+        if (nrPage == ((list.size() - 1) / 3 + 1) || list.isEmpty()) {
+            next.setVisible(false);
+        }
+
+        if (!(list.isEmpty())) {
+            for (int i = 0; i < 4; i++) {
+                if ((nrPage - 1) * 4 + i >= list.size()) continue;
+
+                FXMLLoader loader = new FXMLLoader(Main.class.getClassLoader().getResource("OrderBox.fxml"));
+
+                try {
+                    Pane p = loader.load();
+                    ((OrderBoxController) (loader.getController())).load(list.get((nrPage - 1) * 4 + i));
+                    pane.getChildren().add(p);
+                    p.setLayoutX(180);
+                    p.setLayoutY(40 + i * 120);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (nrPage == (OrderService.getOrderRepositorySize() - 1) / 3 + 1) {
+                next.setVisible(false);
+            }
+        }
     }
 
     @FXML
@@ -81,13 +81,11 @@ public class MyManagerProfileController {
     }
     public void handleGoOrders() {
         nrPage = 1;
-        current = 1;
         reloadPages();
     }
 
     public void handleGoStatistics() {
         nrPage = 1;
-        current = 2;
         reloadPages();
     }
 }

@@ -5,25 +5,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="78.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.ckbk.sre.controllers.UserBoxController">
-    <ImageView fx:id="image" fitHeight="71.0" fitWidth="73.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true"
-               preserveRatio="true"/>
+<AnchorPane prefHeight="78.0" prefWidth="375.0" style="-fx-border-color: red; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.UserBoxController">
+    <ImageView fx:id="image" fitHeight="71.0" fitWidth="73.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
 
-    <Text fx:id="username" layoutX="110.0" layoutY="32.0" textAlignment="CENTER" wrappingWidth="135.0"/>
-    <Text fx:id="email" layoutX="110.0" layoutY="57.0" textAlignment="CENTER" wrappingWidth="135.0"/>
+    <Text fx:id="username" layoutX="110.0" layoutY="32.0" textAlignment="CENTER" wrappingWidth="135.0" />
+    <Text fx:id="email" layoutX="110.0" layoutY="57.0" textAlignment="CENTER" wrappingWidth="135.0" />
 
     <Button layoutX="280.0" layoutY="21.0" onMouseClicked="#handleDeleteAction" prefHeight="37.0" prefWidth="40.0">
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0">
-                <Image url="@images/icon/icon_garbage.png"/>
+                <Image url="@images/icon/icon_garbage.png" />
             </ImageView>
         </graphic>
     </Button>
     <Button layoutX="321.0" layoutY="21.0" onMouseClicked="#handleCancelAction" prefHeight="37.0" prefWidth="41.0">
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0">
-                <Image url="@images/icon/icon_cancel.png"/>
+                <Image url="@images/icon/icon_cancel.png" />
             </ImageView>
         </graphic>
     </Button>

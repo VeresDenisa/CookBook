@@ -6,6 +6,7 @@ import org.ckbk.sre.model.Product;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
+import java.util.Objects;
 
 public class ProductService {
 
@@ -19,6 +20,13 @@ public class ProductService {
         checkInputFieldsAreFilled(name, image, quantity, price);
         checkInputIsANumber(quantity, price, available);
         productRepository.insert(new Product(name, image, username, Float.parseFloat(quantity), Float.parseFloat(price), measurement, Float.parseFloat(available)));
+    }
+
+    public static Product findProduct(String username, String name){
+        for(Product product : productRepository.find())
+            if(Objects.equals(product.getUsername(), username) && Objects.equals(product.getName(), name))
+                return product;
+        return null;
     }
 
     private static void checkInputFieldsAreFilled(String name, String image, String quantity, String  price) throws EmptyInputFieldException {
