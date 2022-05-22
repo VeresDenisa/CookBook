@@ -66,25 +66,25 @@ public class RecipeBookController {
     }
 
     @FXML
-    public void handleGoNext() throws Exception{
+    public void handleGoNext(){
         nrPage++;
         reloadPages();
     }
 
     @FXML
-    public void handleGoPrev() throws Exception{
+    public void handleGoPrev(){
         nrPage--;
         reloadPages();
     }
 
     @FXML
-    public void handleGoFirst() throws Exception{
+    public void handleGoFirst(){
         nrPage = 1;
         reloadPages();
     }
 
     @FXML
-    public void handleGoLast() throws Exception{
+    public void handleGoLast(){
         nrPage = (int)((RecipeService.getRecipeRepositorySize() - 1) / 3 + 1);
         reloadPages();
     }

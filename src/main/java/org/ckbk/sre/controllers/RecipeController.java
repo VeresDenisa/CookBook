@@ -49,7 +49,12 @@ public class RecipeController {
     public static void setIndex(int i) { index = i; }
 
     @FXML
-    public void initialize() {
+    public void initialize(){
+        load();
+    }
+
+    @FXML
+    private void load() {
         Recipe recipe = RecipeService.getRecipeRepository().find().toList().get(index);
         title.setText(recipe.getName());
         author.setText(recipe.getAuthor());
@@ -86,7 +91,8 @@ public class RecipeController {
             toDo.setVisible(true);
             now.setVisible(true);
             done.setVisible(true);
-            report.setVisible(UserService.findUser(recipe.getAuthor()).getRole() == User.ROLE.Client && !(Objects.equals(UserService.findUser(recipe.getAuthor()), UserService.getUser())));
+            report.setVisible(UserService.findUser(recipe.getAuthor()).getRole() == User.ROLE.Client && !(UserService.findUser(recipe.getAuthor()).isReported()) && !(Objects.equals(UserService.findUser(recipe.getAuthor()), UserService.getUser())));
+            if(UserService.findUser(recipe.getAuthor()).isReported()) userMessage.setText("User reported!");
         }else{
             fav.setVisible(false);
             toDo.setVisible(false);
@@ -123,5 +129,6 @@ public class RecipeController {
     public void handleReportUser() {
         UserService.reportClient(RecipeService.getRecipeRepository().find().toList().get(index).getAuthor());
         userMessage.setText("User reported!");
+        load();
     }
 }
