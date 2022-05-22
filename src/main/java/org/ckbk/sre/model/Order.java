@@ -76,8 +76,27 @@ public class Order {
         this.sent = sent;
     }
 
-    public ArrayList<Integer> getIngredientQuantity() {
-        return ingredientQuantity;
+    public String getIngredientQuantityString() {
+        String s = "";
+        for(int i = 0; i < ingredientQuantity.size(); i++)
+            s += ingredientQuantity.get(i) + "\n";
+        return s;
+    }
+
+    public String getIngredientNameString() {
+        String s = "";
+        for(int i = 0; i < ingredient.size(); i++) {
+            System.out.println(ingredient.get(i));
+            s += ingredient.get(i).getName() + "\n";
+        }
+        return s;
+    }
+
+    public String getIngredientPriceString() {
+        String s = "";
+        for(int i = 0; i < ingredient.size(); i++)
+            s += ingredient.get(i).getPrice() + "\n";
+        return s;
     }
 
     public void setIngredientQuantity(ArrayList<Integer> ingredientQuantity) {

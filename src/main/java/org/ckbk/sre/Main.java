@@ -56,7 +56,7 @@ public class Main extends Application {
             ArrayList<Integer> quantity = new ArrayList<Integer>();
             product.add(ProductService.findProduct("manager", "Milk"));
             quantity.add(3);
-            product.add(ProductService.findProduct("manager", " Eggs"));
+            product.add(ProductService.findProduct("manager", "Eggs"));
             quantity.add(30);
             product.add(ProductService.findProduct("manager", "Strawberries"));
             quantity.add(500);

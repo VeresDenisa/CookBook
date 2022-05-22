@@ -1,9 +1,15 @@
 package org.ckbk.sre.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.ckbk.sre.model.Order;
 import org.ckbk.sre.services.OrderService;
+
+import java.io.IOException;
 
 public class OrderBoxController {
     @FXML
@@ -32,6 +38,13 @@ public class OrderBoxController {
     }
 
     @FXML
-    public void handleOpenAction() {
+    public void handleOpenAction() throws IOException {
+        OrderController.setIndex(this.index);
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Order.fxml"));
+        primaryStage.setTitle("ORDER");
+        primaryStage.setScene(new Scene(root, 300, 400));
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 }

@@ -24,7 +24,6 @@ public class OrderService {
         ArrayList<Integer> mine = new ArrayList<>();
         var l = orderRepository.find().toList();
         for(Order r : l){
-            System.out.println( r.getShop() + "    " + r.isSent() + "");
             if(Objects.equals(UserService.getUser().getUsername(), r.getShop()) && r.isSent()) {
                 mine.add(l.indexOf(r));
             }
@@ -45,6 +44,10 @@ public class OrderService {
 
     public static void addOrder(String username, String shop, boolean sent, ArrayList<Product> ingredient, ArrayList<Integer> ingredientQuantity) {
         orderRepository.insert(new Order(username, shop, sent, ingredient, ingredientQuantity));
+    }
+
+    public static ObjectRepository<Order> getOrderRepository() {
+        return orderRepository;
     }
 
     public static long getOrderRepositorySize(){
