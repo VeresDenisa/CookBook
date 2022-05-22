@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import org.ckbk.sre.Main;
-import org.ckbk.sre.services.RecipeListService;
-import org.ckbk.sre.services.RecipeService;
 import org.ckbk.sre.services.UserService;
 
 import java.io.IOException;
@@ -42,11 +40,12 @@ public class MyAdminProfileController {
         }
 
         ArrayList<String> list;
-//        if(current == 1)
-//            list = RecipeService.getMyRecipes();
-//        else
+        if(current == 1)
+            list = UserService.getReportedUsers();
+        else
             list = UserService.getReportedUsers();
 
+        assert list != null;
         if (nrPage == ((list.size() - 1) / 8 + 1) || list.isEmpty()) {
             next.setVisible(false);
         }
