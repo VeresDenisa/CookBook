@@ -1,6 +1,5 @@
 package org.ckbk.sre.services;
 
-import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.RecipeList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -19,10 +18,12 @@ public class RecipeListService {
     public static void addRecipeList(String username, int recipeId, boolean toDo, boolean now, boolean done, boolean fav) {
         for (RecipeList recipeList : recipeListRepository.find()) {
             if (Objects.equals(username, recipeList.getUsername()) && Objects.equals(recipeId, recipeList.getRecipeId())) {
-                recipeList.setFav(fav);
-                recipeList.setToDo(toDo);
-                recipeList.setNow(now);
-                recipeList.setDone(done);
+                if(fav) recipeList.setFav(true);
+                else{
+                    recipeList.setToDo(toDo);
+                    recipeList.setNow(now);
+                    recipeList.setDone(done);
+                }
                 recipeListRepository.update(recipeList);
                 return;
             }
@@ -31,7 +32,7 @@ public class RecipeListService {
     }
 
     public static ArrayList<Integer> getMyFavRecipes(){
-        ArrayList<Integer> mine = new ArrayList<Integer>();
+        ArrayList<Integer> mine = new ArrayList<>();
         var l = recipeListRepository.find().toList();
         for(RecipeList r : l){
             if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isFav()) {
@@ -42,7 +43,7 @@ public class RecipeListService {
     }
 
     public static ArrayList<Integer> getMyToDoRecipes(){
-        ArrayList<Integer> mine = new ArrayList<Integer>();
+        ArrayList<Integer> mine = new ArrayList<>();
         var l = recipeListRepository.find().toList();
         for(RecipeList r : l){
             if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isToDo()) {
@@ -53,7 +54,7 @@ public class RecipeListService {
     }
 
     public static ArrayList<Integer> getMyDoneRecipes(){
-        ArrayList<Integer> mine = new ArrayList<Integer>();
+        ArrayList<Integer> mine = new ArrayList<>();
         var l = recipeListRepository.find().toList();
         for(RecipeList r : l){
             if(Objects.equals(UserService.getUser().getUsername(), r.getUsername()) && r.isDone()) {
@@ -61,10 +62,5 @@ public class RecipeListService {
             }
         }
         return mine;
-    }
-
-    public static void showRecipesList(){
-        for(RecipeList rl : recipeListRepository.find())
-            System.out.println(rl.getRecipeId() + "  " + rl.getUsername() + " fav:" + rl.isFav() + " now:" + rl.isNow() + " toDo:" + rl.isToDo() + " done:" + rl.isDone());
     }
 }

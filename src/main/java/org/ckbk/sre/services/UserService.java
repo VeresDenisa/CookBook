@@ -1,6 +1,7 @@
 package org.ckbk.sre.services;
 
 import org.ckbk.sre.exceptions.*;
+import org.ckbk.sre.model.RecipeList;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.ckbk.sre.model.User;
@@ -8,6 +9,7 @@ import org.ckbk.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,20 +55,25 @@ public class UserService {
                 } else throw new InvalidCredentialsException();
     }
 
-    public static void deleteAccount(String password) throws InvalidCredentialsException {
+    public static void deleteMyAccount(String password) throws InvalidCredentialsException {
         for(User user : userRepository.find())
             if(Objects.equals(user, loggedInUser))
                 if (loggedInUser.getPassword().equals(encodePassword(loggedInUser.getUsername(), password))) {
                     userRepository.remove(loggedInUser);
+                    RecipeService.changeAnonymous(loggedInUser);
                 } else throw new InvalidCredentialsException();
+    }
+
+    public static void deleteClientAccount(User user){
+        for(User u : userRepository.find())
+            if(Objects.equals(user, u)) {
+                userRepository.remove(u);
+                RecipeService.changeAnonymous(u);
+            }
     }
 
     private static void checkNewPassword(String passN, String passNC) throws NewPasswordIsNotConfirmedException {
         if (!(passN.equals(passNC))) throw new NewPasswordIsNotConfirmedException();
-    }
-
-    public static User getFirst(){
-        return userRepository.find().toList().get(0);
     }
 
     private static void checkEmailAddressIsValid(String mail) throws EmailAddressIsNotValidException {
@@ -117,6 +124,22 @@ public class UserService {
         return null;
     }
 
+    public static void reportClient(String username){
+        for(User user : userRepository.find())
+            if(Objects.equals(user.getUsername(), username)){
+                user.setReported(true);
+                userRepository.update(user);
+            }
+    }
+
+    public static void cancelReportClient(String username){
+        for(User user : userRepository.find())
+            if(Objects.equals(user.getUsername(), username)){
+                user.setReported(false);
+                userRepository.update(user);
+            }
+    }
+
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
@@ -150,4 +173,14 @@ public class UserService {
     }
 
 
+    public static ArrayList<String> getReportedUsers() {
+        ArrayList<String> rep = new ArrayList<>();
+        var l = userRepository.find().toList();
+        for(User user : l){
+            if(user.isReported()) {
+                rep.add(user.getUsername());
+            }
+        }
+        return rep;
+    }
 }

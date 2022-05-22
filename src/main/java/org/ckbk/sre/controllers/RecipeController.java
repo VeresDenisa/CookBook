@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.ckbk.sre.model.Recipe;
 import org.ckbk.sre.model.User;
@@ -17,6 +16,7 @@ import java.util.Objects;
 public class RecipeController {
     @FXML
     public Button report;
+
     @FXML
     private Text title;
     @FXML
@@ -31,6 +31,8 @@ public class RecipeController {
     private Text description;
     @FXML
     private Text addMessage;
+    @FXML
+    private Text userMessage;
     @FXML
     private ImageView image;
 
@@ -119,5 +121,7 @@ public class RecipeController {
     }
 
     public void handleReportUser() {
+        UserService.reportClient(RecipeService.getRecipeRepository().find().toList().get(index).getAuthor());
+        userMessage.setText("User reported!");
     }
 }

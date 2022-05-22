@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.MyAdminProfileController">
     <children>
     <fx:include source="Sidebar.fxml" />
 
-        <TabPane layoutX="61.0" prefHeight="500.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab text="RECIPES">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="USERS">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <Pane fx:id="pane" layoutX="61.0" layoutY="69.0" prefHeight="377.0" prefWidth="841.0">
+        </Pane>
+        <Button fx:id="prev" layoutX="409.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoPrev" prefHeight="16.0" prefWidth="36.0">
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_prev.png" />
+                </ImageView>
+            </graphic></Button>
+        <Button fx:id="next" layoutX="455.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#handleGoNext" prefHeight="31.0" prefWidth="36.0">
+            <graphic>
+                <ImageView fitHeight="23.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_next.png" />
+                </ImageView>
+            </graphic></Button>
 
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
+        <Button layoutX="392.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoUsers" prefHeight="41.0" prefWidth="53.0">
+            <graphic>
+                <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_profile.png" />
+                </ImageView>
+            </graphic></Button>
+        <Button layoutX="455.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#handleGoRecipes" prefHeight="25.0" prefWidth="53.0">
+            <graphic>
+                <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@images/icon/icon_recipe.png" />
+                </ImageView>
+            </graphic></Button>
     </children>
 </AnchorPane>

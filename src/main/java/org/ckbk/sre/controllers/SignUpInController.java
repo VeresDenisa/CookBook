@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.ckbk.sre.exceptions.*;
-import org.ckbk.sre.model.User;
 import org.ckbk.sre.services.UserService;
 
 public class SignUpInController {

@@ -5,69 +5,79 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ckbk.sre.controllers.RecipeController">
-    <children>
-        <fx:include source="Sidebar.fxml" />
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.ckbk.sre.controllers.RecipeController">
+    <fx:include source="Sidebar.fxml"/>
 
-        <Button fx:id="fav" layoutX="647.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToFavAction" prefHeight="40.0" prefWidth="49.0">
-             <graphic>
-                <ImageView fitHeight="31.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_heart.png" />
-                </ImageView>
-             </graphic></Button>
+    <Button fx:id="fav" layoutX="647.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToFavAction"
+            prefHeight="40.0" prefWidth="49.0">
+        <graphic>
+            <ImageView fitHeight="31.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_heart.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
 
-        <Button fx:id="toDo" layoutX="699.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToToDoAction" prefHeight="40.0" prefWidth="49.0">
-            <graphic>
-                <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_list.png" />
-                </ImageView>
-            </graphic></Button>
+    <Button fx:id="toDo" layoutX="699.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToToDoAction"
+            prefHeight="40.0" prefWidth="49.0">
+        <graphic>
+            <ImageView fitHeight="32.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_list.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
 
-        <Button fx:id="now" layoutX="752.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToNowAction">
-            <graphic>
-                <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_now.png" />
-                </ImageView>
-            </graphic></Button>
-        <Button fx:id="done" layoutX="804.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToDoneAction">
-            <graphic>
-                <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@images/icon/icon_tick.png" />
-                </ImageView>
-            </graphic></Button>
+    <Button fx:id="now" layoutX="752.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToNowAction">
+        <graphic>
+            <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_now.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="done" layoutX="804.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#handleAddToDoneAction">
+        <graphic>
+            <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_tick.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
 
-        <Text fx:id="title" layoutX="120.0" layoutY="47.0" wrappingWidth="735.0">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Text>
+    <Text fx:id="title" layoutX="120.0" layoutY="47.0" wrappingWidth="735.0">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Text>
 
-        <Text fx:id="author" layoutX="120.0" layoutY="74.0" wrappingWidth="200.0">
-         <font>
-            <Font size="18.0" />
-         </font></Text>
+    <Text fx:id="author" layoutX="120.0" layoutY="74.0" wrappingWidth="200.0">
+        <font>
+        <Font size="18.0"/>
+        </font>
+    </Text>
 
-        <Text fx:id="time" layoutX="350.0" layoutY="110.0" wrappingWidth="100.0" />
-        <Text fx:id="type" layoutX="477.0" layoutY="109.0" wrappingWidth="100.0" />
+    <Text fx:id="time" layoutX="350.0" layoutY="110.0" wrappingWidth="100.0"/>
+    <Text fx:id="type" layoutX="477.0" layoutY="109.0" wrappingWidth="100.0"/>
 
-        <Text fx:id="description" layoutX="109.0" layoutY="159.0" wrappingWidth="494.0" />
+    <Text fx:id="description" layoutX="103.0" layoutY="168.0" wrappingWidth="494.0"/>
 
-        <Text fx:id="addMessage" layoutX="630.0" layoutY="152.0" textAlignment="CENTER" wrappingWidth="236.0" />
+    <Text fx:id="addMessage" layoutX="630.0" layoutY="152.0" textAlignment="CENTER" wrappingWidth="236.0"/>
+    <Text fx:id="userMessage" layoutX="634.0" layoutY="71.0" textAlignment="CENTER" wrappingWidth="236.0"/>
 
-        <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="image" fitHeight="206.0" fitWidth="206.0" layoutX="649.0" layoutY="175.0" pickOnBounds="true"
+               preserveRatio="true"/>
 
-        <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="120.0" layoutY="89.0">
-        </ImageView>
+    <ImageView fx:id="complexity" fitHeight="32.0" fitWidth="145.0" layoutX="120.0" layoutY="89.0">
+    </ImageView>
 
-        <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="306.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@images/icon/icon_time.png" />
-        </ImageView>
+    <ImageView fitHeight="24.0" fitWidth="25.0" layoutX="306.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/icon/icon_time.png"/>
+    </ImageView>
 
-      <Button fx:id="report" onMouseClicked="#handleReportUser" layoutX="68.0" layoutY="50.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="31.0">
-          <graphic>
-              <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@images/icon/icon_report.png" />
-              </ImageView>
-          </graphic></Button>
-    </children>
+    <Button fx:id="report" layoutX="68.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#handleReportUser"
+            prefHeight="33.0" prefWidth="31.0">
+        <graphic>
+            <ImageView fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/icon/icon_report.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
 </AnchorPane>

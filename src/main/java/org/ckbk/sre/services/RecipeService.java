@@ -84,6 +84,14 @@ public class RecipeService {
         }
     }
 
+    public static void changeAnonymous(User user){
+        for (Recipe r : recipeRepository.find())
+            if(Objects.equals(r.getAuthor(), user.getUsername())){
+                r.setAuthor("admin");
+                recipeRepository.update(r);
+            }
+    }
+
     public static ArrayList<Integer> getMyRecipes(){
         ArrayList<Integer> mine = new ArrayList<Integer>();
         var l = recipeRepository.find().toList();
