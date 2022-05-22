@@ -31,6 +31,7 @@ public class Main extends Application {
         RecipeListService.initDatabase(database);
         ProductService.initDatabase(database);
         OrderService.initDatabase(database);
+
         if(UserService.getUserRepositorySize() == 0){
             UserService.addUser("admin", "a", "dennisa_dnns@yahoo.com", "0756134164", "admin", "admin", "Admin");
             UserService.addUser("george", "a", "dennisa_dnns@yahoo.com", "0756134164", "admin", "admin", "Client");
@@ -64,6 +65,7 @@ public class Main extends Application {
             quantity.add(2);
             OrderService.addOrder("andy", "manager", true, product, quantity);
         }
+
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SignUpIn.fxml"));
         primaryStageS.setTitle("SIGN IN / SIGN UP");
         primaryStageS.setScene(new Scene(root, 900, 500));

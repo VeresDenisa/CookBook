@@ -1,6 +1,5 @@
 package org.ckbk.sre.model;
 
-import org.ckbk.sre.services.OrderService;
 import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
@@ -79,23 +78,22 @@ public class Order {
     public String getIngredientQuantityString() {
         String s = "";
         for(int i = 0; i < ingredientQuantity.size(); i++)
-            s += ingredientQuantity.get(i) + "\n";
+            s += (ingredientQuantity.get(i) / ingredient.get(i).getQuantity()) + "\n";
         return s;
     }
 
     public String getIngredientNameString() {
         String s = "";
-        for(int i = 0; i < ingredient.size(); i++) {
-            System.out.println(ingredient.get(i));
-            s += ingredient.get(i).getName() + "\n";
+        for (Product product : ingredient) {
+            System.out.println(product);
+            s += product.getName() + "\n";
         }
         return s;
     }
 
     public String getIngredientPriceString() {
         String s = "";
-        for(int i = 0; i < ingredient.size(); i++)
-            s += ingredient.get(i).getPrice() + "\n";
+        for (Product product : ingredient) s += product.getPrice() + "\n";
         return s;
     }
 
