@@ -48,10 +48,10 @@ public class OrderController {
         username.setText("Buyer: " + order.getUsername());
         shop.setText("Shop: " + order.getShop());
         date.setText("Date: " + order.getDate());
-        totalPrice.setText("Total: " + String.format("%.2f", order.getTotalPrice()));
-        ingredient.setText("Product\n" + order.getIngredientNameString());
-        quantity.setText("Quantity\n" + order.getIngredientQuantityString());
-        price.setText("Price\n" + order.getIngredientPriceString());
+        totalPrice.setText("Total: " + String.format("%.2f", order.getTotalPrice()) + " RON");
+        ingredient.setText("Product\n\n" + order.getIngredientNameString());
+        quantity.setText("Quantity\n\n" + order.getIngredientQuantityString());
+        price.setText("Price\n\n" + order.getIngredientPriceString());
     }
 
     @FXML
