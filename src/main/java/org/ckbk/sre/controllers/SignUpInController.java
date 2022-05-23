@@ -4,15 +4,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.ckbk.sre.exceptions.*;
+import org.ckbk.sre.model.User;
 import org.ckbk.sre.services.UserService;
 
 public class SignUpInController {
-
+    @FXML
+    private Button login;
     @FXML
     private Text registrationMessage;
     @FXML
@@ -39,7 +42,7 @@ public class SignUpInController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), "Client");
             registrationMessage.setText("Client account created successfully!");
-        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException | PasswordComplexityIsTooLowException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException e) {
             registrationMessage.setText(e.getMessage());
         }
     }
@@ -50,9 +53,15 @@ public class SignUpInController {
             UserService.logInUser(usernameLogInField.getText(), passwordLogInField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
-            primaryStage.setTitle("RECIPES BOOK");
-            primaryStage.setScene(new Scene(root, 900, 500));
+            if(UserService.getUser().getRole() == User.ROLE.Admin){
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyAdminProfile.fxml"));
+                primaryStage.setTitle("MY PROFILE");
+                primaryStage.setScene(new Scene(root, 900, 500));
+            }else {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
+                primaryStage.setTitle("RECIPES BOOK");
+                primaryStage.setScene(new Scene(root, 900, 500));
+            }
             primaryStage.setResizable(false);
             primaryStage.show();
             org.ckbk.sre.Main.primaryStage = primaryStage;

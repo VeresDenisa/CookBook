@@ -70,7 +70,7 @@ public class SettingsController {
         try{
             UserService.editUser(passwordFieldConfirm.getText(), lastNameField.getText(), firstNameField.getText(), mailField.getText(), nrTelField.getText(), passwordFieldEdit.getText(), passwordFieldEditConfirm.getText());
             reload();
-        }catch (EmailAddressIsNotValidException | InvalidCredentialsException | NewPasswordIsNotConfirmedException | PhoneNumberIsNotValidException | PasswordComplexityIsTooLowException e){
+        }catch (EmailAddressIsNotValidException | InvalidCredentialsException | NewPasswordIsNotConfirmedException | PhoneNumberIsNotValidException e){
             confirmationMessage.setText(e.getMessage());
         }
     }

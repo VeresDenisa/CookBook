@@ -31,7 +31,7 @@ public class AddUserController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), mailField.getText(), nrTelField.getText(), lastNameField.getText(), firstNameField.getText(), String.valueOf(roleField.getValue()));
             registrationMessage.setText(roleField.getValue() + " account created successfully!");
-        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException | PasswordComplexityIsTooLowException e) {
+        } catch (EmptyInputFieldException | UsernameAlreadyExistsException | PhoneNumberIsNotValidException | EmailAddressIsNotValidException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

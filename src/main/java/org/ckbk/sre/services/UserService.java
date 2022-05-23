@@ -22,17 +22,15 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, String role) throws UsernameAlreadyExistsException, EmptyInputFieldException, PhoneNumberIsNotValidException, EmailAddressIsNotValidException, PasswordComplexityIsTooLowException {
+    public static void addUser(String username, String password, String mail, String nrTel, String lastName, String firstName, String role) throws UsernameAlreadyExistsException, EmptyInputFieldException, PhoneNumberIsNotValidException, EmailAddressIsNotValidException{
         checkUserDoesNotAlreadyExist(username);
         checkInputFieldsAreFilled(username, password, mail, nrTel, lastName, firstName);
-        //checkPasswordComplexity(password);
         checkPhoneNumberIsValid(nrTel);
         checkEmailAddressIsValid(mail);
         userRepository.insert(new User(username, encodePassword(username, password), mail, nrTel, lastName, firstName, role, "images/profile/row-3-column-4.png"));
     }
 
-    public static void editUser(String password, String lastName, String firstName, String mail, String nrTel, String passN, String passNC) throws PhoneNumberIsNotValidException, EmailAddressIsNotValidException, PasswordComplexityIsTooLowException, NewPasswordIsNotConfirmedException, InvalidCredentialsException {
-        //checkPasswordComplexity(password);
+    public static void editUser(String password, String lastName, String firstName, String mail, String nrTel, String passN, String passNC) throws PhoneNumberIsNotValidException, EmailAddressIsNotValidException, NewPasswordIsNotConfirmedException, InvalidCredentialsException {
         for(User user : userRepository.find())
             if(Objects.equals(user, loggedInUser))
                 if (loggedInUser.getPassword().equals(encodePassword(loggedInUser.getUsername(), password))) {
@@ -90,12 +88,6 @@ public class UserService {
         if(nrTel.length() != 10) throw new PhoneNumberIsNotValidException();
     }
 
-    private static void checkPasswordComplexity(String password) throws PasswordComplexityIsTooLowException {
-        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$");
-        Matcher mat = pattern.matcher(password);
-        if(!mat.matches()) throw new PasswordComplexityIsTooLowException();
-    }
-
     public static void logInUser(String username, String password) throws InvalidCredentialsException, EmptyInputFieldException {
         if(username.isEmpty() || password.isEmpty()) throw new EmptyInputFieldException();
         for (User user : userRepository.find()) {
@@ -150,7 +142,7 @@ public class UserService {
         if(username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || nrTel.isEmpty() || mail.isEmpty()) throw new EmptyInputFieldException();
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -181,5 +173,9 @@ public class UserService {
             }
         }
         return rep;
+    }
+
+    public static ObjectRepository<User> getUserRepository() {
+        return userRepository;
     }
 }

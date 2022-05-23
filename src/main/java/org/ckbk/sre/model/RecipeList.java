@@ -47,6 +47,10 @@ public class RecipeList {
 
     public void setDone(boolean done) {
         this.done = done;
+        if(done) {
+            this.toDo = false;
+            this.now = false;
+        }
     }
 
     public boolean isToDo() {
@@ -55,6 +59,10 @@ public class RecipeList {
 
     public void setToDo(boolean toDo) {
         this.toDo = toDo;
+        if(toDo) {
+            this.done = false;
+            this.now = false;
+        }
     }
 
     public boolean isNow() {
@@ -63,6 +71,10 @@ public class RecipeList {
 
     public void setNow(boolean now) {
         this.now = now;
+        if(now) {
+            this.toDo = false;
+            this.done = false;
+        }
     }
 
     public boolean isFav() {

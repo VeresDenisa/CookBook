@@ -38,7 +38,7 @@
               AnchorPane.topAnchor="360.0"/>
         <HBox alignment="bottom_right" spacing="10" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="106.0"
               AnchorPane.topAnchor="400.0">
-            <Button onMouseClicked="#handleLogInAction" prefHeight="25.0" prefWidth="190.0" text="Connect"/>
+            <Button fx:id="login" onMouseClicked="#handleLogInAction" prefHeight="25.0" prefWidth="190.0" text="Connect"/>
         </HBox>
     </AnchorPane>
     <AnchorPane>

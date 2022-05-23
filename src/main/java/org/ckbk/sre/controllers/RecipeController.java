@@ -58,7 +58,11 @@ public class RecipeController {
         Recipe recipe = RecipeService.getRecipeRepository().find().toList().get(index);
         title.setText(recipe.getName());
         author.setText(recipe.getAuthor());
-        image.setImage(new Image(recipe.getImage()));
+        try{
+            image.setImage(new Image(recipe.getImage()));
+        }catch (IllegalArgumentException | NullPointerException e){
+            image.setImage(new Image("images/icon/icon_no.png"));
+        }
         if(recipe.getType() == Recipe.TYPE.Breakfast) type.setText("Breakfast");
         else if(recipe.getType() == Recipe.TYPE.Lunch) type.setText("Lunch");
         else if(recipe.getType() == Recipe.TYPE.Dinner) type.setText("Dinner");

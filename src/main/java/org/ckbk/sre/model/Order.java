@@ -23,7 +23,8 @@ public class Order {
         this.shop = shop;
         this.username = username;
         this.sent = sent;
-        this.date = "21/05/2022";
+        String[] dateChoose = {"17/05/2022", "18/05/2022", "19/05/2022", "20/05/2022", "21/05/2022", "22/05/2022"};
+        this.date = dateChoose[(int)OrderService.getOrderRepositorySize()];
         this.ingredient = ingredient;
         this.ingredientQuantity = ingredientQuantity;
         this.totalPrice = 0;
@@ -79,23 +80,22 @@ public class Order {
     public String getIngredientQuantityString() {
         String s = "";
         for(int i = 0; i < ingredientQuantity.size(); i++)
-            s += ingredientQuantity.get(i) + "\n";
+            s += (ingredientQuantity.get(i) / ingredient.get(i).getQuantity()) + "\n";
         return s;
     }
 
     public String getIngredientNameString() {
         String s = "";
-        for(int i = 0; i < ingredient.size(); i++) {
-            System.out.println(ingredient.get(i));
-            s += ingredient.get(i).getName() + "\n";
+        for (Product product : ingredient) {
+            System.out.println(product);
+            s += product.getName() + "\n";
         }
         return s;
     }
 
     public String getIngredientPriceString() {
         String s = "";
-        for(int i = 0; i < ingredient.size(); i++)
-            s += ingredient.get(i).getPrice() + "\n";
+        for (Product product : ingredient) s += product.getPrice() + "\n";
         return s;
     }
 
