@@ -59,14 +59,14 @@ public class MyManagerProfileController {
                     pane.getChildren().add(p);
                     if(i < 4) p.setLayoutY(20);
                     else p.setLayoutY(205);
-                    p.setLayoutX(40 + (i % 4) * 175);
+                    p.setLayoutX(40 + (i % 4) * 180);
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
 
-            if (nrPage == (OrderService.getOrderRepositorySize() - 1) / 3 + 1) {
+            if (nrPage == (OrderService.getOrderRepositorySize() - 1) / 8 + 1) {
                 next.setVisible(false);
             }
         }
