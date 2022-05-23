@@ -58,8 +58,8 @@ public class MyManagerProfileController {
                     ((OrderBoxController) (loader.getController())).load(list.get((nrPage - 1) * 8 + i));
                     pane.getChildren().add(p);
                     if(i < 4) p.setLayoutY(20);
-                    else p.setLayoutY(205);
-                    p.setLayoutX(40 + (i % 4) * 180);
+                    else p.setLayoutY(210);
+                    p.setLayoutX(40 + (i % 4) * 185);
 
                 } catch (IOException e) {
                     e.printStackTrace();

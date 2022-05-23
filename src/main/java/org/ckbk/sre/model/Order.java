@@ -23,7 +23,7 @@ public class Order {
         this.shop = shop;
         this.username = username;
         this.sent = sent;
-        String[] dateChoose = {"21/05/2022", "14/05/2022", "17/05/2022", "22/05/2022", "16/05/2022"};
+        String[] dateChoose = {"17/05/2022", "18/05/2022", "19/05/2022", "20/05/2022", "21/05/2022", "22/05/2022"};
         this.date = dateChoose[(int)OrderService.getOrderRepositorySize()];
         this.ingredient = ingredient;
         this.ingredientQuantity = ingredientQuantity;

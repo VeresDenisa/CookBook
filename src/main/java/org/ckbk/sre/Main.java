@@ -52,8 +52,8 @@ public class Main extends Application {
             ProductService.addProduct("Chocolate Bar", "images/product/product_3.jpg", "manager", "1", "15.00", "piece", "2");
             ProductService.addProduct("Candy Bar", "images/product/product_4.jpg", "manager", "1", "3.11", "piece", "3");
             ProductService.addProduct("Sprinkles", "images/product/product_5.jpg", "manager", "1", "5.24", "piece", "20");
-            ProductService.addProduct("Natural Yogurt", "images/product/product_6.jpg", "manager", "1", "6.24", "piece", "10");
-            ProductService.addProduct("Strawberries", "images/product/product_7.jpg", "manager", "500", "26.18", "g", "1500");
+            ProductService.addProduct("Natural Yogurt", "images/product/product_6.jpg", "manager_s", "1", "6.24", "piece", "10");
+            ProductService.addProduct("Strawberries", "images/product/product_7.jpg", "manager_s", "500", "26.18", "g", "1500");
 
             ArrayList<Product> product = new ArrayList<>();
             ArrayList<Integer> quantity = new ArrayList<>();
@@ -82,6 +82,9 @@ public class Main extends Application {
             product.add(ProductService.findProduct("manager", "Chicken Breasts"));
             quantity.add(5);
             OrderService.addOrder("andy", "manager", true, product, quantity);
+            product.add(ProductService.findProduct("manager", "Chocolate Bar"));
+            quantity.add(1);
+            OrderService.addOrder("marius", "manager", true, product, quantity);
 
             product = new ArrayList<>();
             quantity = new ArrayList<>();
