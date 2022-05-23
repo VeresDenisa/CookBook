@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.ckbk.sre.exceptions.*;
+import org.ckbk.sre.model.User;
 import org.ckbk.sre.services.UserService;
 
 public class SignUpInController {
@@ -52,9 +53,15 @@ public class SignUpInController {
             UserService.logInUser(usernameLogInField.getText(), passwordLogInField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
-            primaryStage.setTitle("RECIPES BOOK");
-            primaryStage.setScene(new Scene(root, 900, 500));
+            if(UserService.getUser().getRole() == User.ROLE.Admin){
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MyAdminProfile.fxml"));
+                primaryStage.setTitle("MY PROFILE");
+                primaryStage.setScene(new Scene(root, 900, 500));
+            }else {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("RecipeBook.fxml"));
+                primaryStage.setTitle("RECIPES BOOK");
+                primaryStage.setScene(new Scene(root, 900, 500));
+            }
             primaryStage.setResizable(false);
             primaryStage.show();
             org.ckbk.sre.Main.primaryStage = primaryStage;

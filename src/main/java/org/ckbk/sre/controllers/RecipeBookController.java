@@ -44,7 +44,7 @@ public class RecipeBookController {
                 ((RecipeBoxController)(loader.getController())).load((nrPage - 1) * 3 + i);
                 pane.getChildren().add(p);
                 p.setLayoutX(70);
-                p.setLayoutY(20 + i * 110);
+                p.setLayoutY(20 + i * 120);
 
             } catch (IOException e) {
                 e.printStackTrace();

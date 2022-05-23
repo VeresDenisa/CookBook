@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -22,7 +23,7 @@ public class AddRecipeController {
     @FXML
     private ChoiceBox typeField;
     @FXML
-    private TextField descriptionField;
+    private TextArea descriptionField;
     @FXML
     private TextField imageField;
     @FXML
@@ -31,7 +32,6 @@ public class AddRecipeController {
     @FXML
     public void handleAddRecipeAction() throws Exception{
         try {
-            System.out.println(UserService.getUser().getUsername());
             RecipeService.addRecipe(nameField.getText(), UserService.getUser(), complexityField.getText(), timeField.getText(), String.valueOf(typeField.getValue()), imageField.getText(), descriptionField.getText());
             org.ckbk.sre.Main.primaryStage.close();
             Stage primaryStage = new Stage();
